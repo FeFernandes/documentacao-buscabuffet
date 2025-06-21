@@ -16,6 +16,6 @@ https://fefernandes.github.io/documentacao-buscabuffet/
 > Esse arquivo abre diretamente no seu navegador (como o Chrome, Edge ou Firefox) e não é necessário nenhum programa especial para visualizar.
 
 ### ℹ️ Importante
-Esta documentação é voltada principalmente para a parte técnica do sistema, como fluxos, telas e funcionamento interno. Por isso, seu visual é simples — o foco é informar.
+Esta documentação é voltada principalmente para a parte técnica do sistema, como fluxos, telas e funcionamento interno.
 
 A documentação deve ser atualizada sempre que alguma funcionalidade for alterada ou adicionada no sistema. Recomenda-se guardar os arquivos salvos em seu computador para futuras consultas, principalmente caso o link de acesso online seja desativado no futuro.
