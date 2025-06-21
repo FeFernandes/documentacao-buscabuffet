@@ -1,0 +1,3881 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentação - Busca Buffet</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <button id="toggleSidebar">☰</button>
+  <aside class="sidebar" id="sidebar">
+    <img src="images/logo.png" alt="Logo Busca Buffet" class="logo" />
+    <h2>Documentação</h2>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#banco">Banco de Dados</a>
+      <a href="#apis">APIs</a>
+      <div class="menu-group">
+        <button class="submenu-toggle">▸ Páginas Externas</button>
+        <div class="submenu">
+          <a href="#home">Home</a>
+          <a href="#buffet">Buffet</a>
+          <a href="#pesquisa">Pesquisar Buffets</a>
+          <a href="#orcamentos">Orçamentos</a>
+          <a href="#anuncie">Anuncie</a>
+          <a href="#sobre-nos">Sobre Nós</a>
+          <a href="#privacidade">Politica de Privacidade</a>
+          <a href="#termo">Termo de Uso</a>
+          <a href="#contato">Contato</a>
+          <a href="#login">Login</a>
+        </div>
+      </div>
+      <div class="menu-group">
+        <button class="submenu-toggle">▸ Páginas Internas</button>
+        <div class="submenu">
+          <a href="#admin">Administrador</a>
+          <a href="#cliente">Cliente</a>
+          <a href="#buffet">Buffets</a>
+          <a href="#dashboard">Dashboard</a>
+          <a href="#perfil">Perfil do Usuário</a>
+          <a href="#assinaturas">Assinaturas</a>
+          <a href="#categorias">Categorias</a>
+          <a href="#cupons">Cupons</a>
+          <a href="#enderecos">Endereços</a>
+          <a href="#eventos">Eventos</a>
+          <a href="#pagamentos">Pagamentos</a>
+          <a href="#usuarios">Usuários</a>
+        </div>
+      </div>
+    </nav>
+  </aside>
+  <main class="content">
+    <section id="sobre">
+      <h1>Sobre</h1>
+      <p>A documentação do sistema <strong>buscabuffet.com.br</strong> descreve as funcionalidades principais da
+        plataforma voltada à conexão entre buffets e clientes.</p>
+    </section>
+    <section id="banco">
+      <h1>Banco de Dados</h1>
+      <p>A estrutura do banco de dados do sistema Busca Buffet foi cuidadosamente projetada para garantir a integridade
+        e a eficiência das informações. Abaixo, detalhamos as principais tabelas, seus campos e os relacionamentos entre
+        elas.</p>
+
+      <h3>Tabelas do Banco de Dados</h3>
+      <p>Aqui estão as descrições de cada tabela, organizadas de forma intuitiva:</p>
+
+      <h4>**`perfils`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`nome`</td>
+            <td>`STRING`</td>
+            <td>Nome do perfil de usuário (ex: Admin, Cliente, Buffet).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`categorias`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`nome`</td>
+            <td>`STRING`</td>
+            <td>Nome da categoria (ex: Aniversário, Casamento).</td>
+          </tr>
+          <tr>
+            <td>`descricao`</td>
+            <td>`STRING`</td>
+            <td>Descrição detalhada da categoria (opcional).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`estados`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`cod`</td>
+            <td>`STRING`</td>
+            <td>Código do estado (ex: IBGE).</td>
+          </tr>
+          <tr>
+            <td>`nome`</td>
+            <td>`STRING`</td>
+            <td>Nome completo do estado.</td>
+          </tr>
+          <tr>
+            <td>`sigla`</td>
+            <td>`STRING`</td>
+            <td>Sigla do estado (ex: SP, RJ).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`cidades`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`cod`</td>
+            <td>`STRING`</td>
+            <td>Código da cidade (ex: IBGE).</td>
+          </tr>
+          <tr>
+            <td>`nome`</td>
+            <td>`STRING`</td>
+            <td>Nome da cidade.</td>
+          </tr>
+          <tr>
+            <td>`id_estado`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `estados.id`. Relacionamento: N:1.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`entidades`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`nome`</td>
+            <td>`STRING`</td>
+            <td>Nome da entidade (Buffet, Cliente).</td>
+          </tr>
+          <tr>
+            <td>`documento`</td>
+            <td>`STRING`</td>
+            <td>Documento da entidade (CPF/CNPJ) (opcional).</td>
+          </tr>
+          <tr>
+            <td>`aceitou_termo`</td>
+            <td>`STRING`</td>
+            <td>Indica se a entidade aceitou os termos de uso (`0` ou `1`).</td>
+          </tr>
+          <tr>
+            <td>`destacado`</td>
+            <td>`STRING`</td>
+            <td>Indica se a entidade está em destaque (`0` ou `1`).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`usuarios`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`email`</td>
+            <td>`STRING`</td>
+            <td>Endereço de e-mail do usuário (único).</td>
+          </tr>
+          <tr>
+            <td>`password`</td>
+            <td>`STRING`</td>
+            <td>Senha do usuário (hash).</td>
+          </tr>
+          <tr>
+            <td>`remember_me_token`</td>
+            <td>`STRING`</td>
+            <td>Token para "lembrar-me" (opcional).</td>
+          </tr>
+          <tr>
+            <td>`google_token`</td>
+            <td>`STRING`</td>
+            <td>Token de autenticação do Google (opcional).</td>
+          </tr>
+          <tr>
+            <td>`token_recovery`</td>
+            <td>`STRING`</td>
+            <td>Token para recuperação de senha (opcional).</td>
+          </tr>
+          <tr>
+            <td>`id_perfil`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `perfils.id`. Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`id_entidade`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `entidades.id`. Relacionamento: N:1.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`contatos`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`descricao`</td>
+            <td>`STRING`</td>
+            <td>Valor do contato (telefone, e-mail, etc.).</td>
+          </tr>
+          <tr>
+            <td>`tipo`</td>
+            <td>`STRING`</td>
+            <td>Tipo de contato (ex: "telefone", "email").</td>
+          </tr>
+          <tr>
+            <td>`id_entidade`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `entidades.id`. Relacionamento: N:1.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`enderecos`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`cep`</td>
+            <td>`STRING`</td>
+            <td>Código de Endereçamento Postal.</td>
+          </tr>
+          <tr>
+            <td>`bairro`</td>
+            <td>`STRING`</td>
+            <td>Nome do bairro.</td>
+          </tr>
+          <tr>
+            <td>`complemento`</td>
+            <td>`STRING`</td>
+            <td>Complemento do endereço (opcional).</td>
+          </tr>
+          <tr>
+            <td>`rua`</td>
+            <td>`STRING`</td>
+            <td>Nome da rua/logradouro.</td>
+          </tr>
+          <tr>
+            <td>`numero`</td>
+            <td>`STRING`</td>
+            <td>Número do endereço.</td>
+          </tr>
+          <tr>
+            <td>`id_cidade`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `cidades.id`. Relacionamento: N:1.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`endereco_entidades`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`tipo`</td>
+            <td>`STRING`</td>
+            <td>Tipo de endereço (ex: "comercial", "residencial").</td>
+          </tr>
+          <tr>
+            <td>`email`</td>
+            <td>`STRING`</td>
+            <td>E-mail associado a este endereço (opcional).</td>
+          </tr>
+          <tr>
+            <td>`telefone`</td>
+            <td>`STRING`</td>
+            <td>Telefone associado a este endereço (opcional).</td>
+          </tr>
+          <tr>
+            <td>`id_endereco`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `enderecos.id`. Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`id_entidade`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `entidades.id`. Relacionamento: N:1.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`planos`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`nome`</td>
+            <td>`STRING`</td>
+            <td>Nome do plano (ex: Básico, Premium).</td>
+          </tr>
+          <tr>
+            <td>`valor_mensal`</td>
+            <td>`DOUBLE`</td>
+            <td>Valor mensal do plano.</td>
+          </tr>
+          <tr>
+            <td>`valor_anual`</td>
+            <td>`DOUBLE`</td>
+            <td>Valor anual do plano.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`plano_funcionalidades`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`descricao`</td>
+            <td>`STRING`</td>
+            <td>Descrição da funcionalidade do plano.</td>
+          </tr>
+          <tr>
+            <td>`id_plano`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `planos.id`. Relacionamento: N:1.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`arquivos`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`nome`</td>
+            <td>`STRING`</td>
+            <td>Nome do arquivo (opcional).</td>
+          </tr>
+          <tr>
+            <td>`path`</td>
+            <td>`TEXT`</td>
+            <td>Caminho ou URL do arquivo.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`assinaturas`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`tipo`</td>
+            <td>`STRING`</td>
+            <td>Tipo de assinatura (ex: "mensal", "anual").</td>
+          </tr>
+          <tr>
+            <td>`id_plano`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `planos.id`. Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`id_entidade`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `entidades.id`. Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`valor`</td>
+            <td>`DOUBLE`</td>
+            <td>Valor da assinatura.</td>
+          </tr>
+          <tr>
+            <td>`desconto`</td>
+            <td>`DOUBLE`</td>
+            <td>Valor do desconto aplicado (padrão: 0).</td>
+          </tr>
+          <tr>
+            <td>`created_at`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data e hora de criação do registro.</td>
+          </tr>
+          <tr>
+            <td>`updated_at`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data e hora da última atualização do registro.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`eventos`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`nome`</td>
+            <td>`STRING`</td>
+            <td>Nome do evento.</td>
+          </tr>
+          <tr>
+            <td>`qtd_pessoas`</td>
+            <td>`INTEGER`</td>
+            <td>Quantidade de pessoas esperadas para o evento.</td>
+          </tr>
+          <tr>
+            <td>`data_do_evento`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data e hora do evento.</td>
+          </tr>
+          <tr>
+            <td>`tipo`</td>
+            <td>`STRING`</td>
+            <td>Tipo do evento (ex: "aniversario", "casamento").</td>
+          </tr>
+          <tr>
+            <td>`observacoes`</td>
+            <td>`STRING`</td>
+            <td>Observações adicionais sobre o evento (opcional).</td>
+          </tr>
+          <tr>
+            <td>`status`</td>
+            <td>`STRING`</td>
+            <td>Status atual do evento (ex: "pendente", "confirmado").</td>
+          </tr>
+          <tr>
+            <td>`id_entidade`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `entidades.id`. Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`created_at`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data e hora de criação do registro.</td>
+          </tr>
+          <tr>
+            <td>`updated_at`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data e hora da última atualização do registro.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`propostas`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`status`</td>
+            <td>`STRING`</td>
+            <td>Status da proposta (ex: "enviada", "aceita", "recusada").</td>
+          </tr>
+          <tr>
+            <td>`valor`</td>
+            <td>`DOUBLE`</td>
+            <td>Valor da proposta (opcional).</td>
+          </tr>
+          <tr>
+            <td>`data_disponibilidade`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data de disponibilidade para o evento (opcional).</td>
+          </tr>
+          <tr>
+            <td>`observacoes`</td>
+            <td>`STRING`</td>
+            <td>Observações adicionais da proposta (opcional).</td>
+          </tr>
+          <tr>
+            <td>`id_entidade`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `entidades.id`. Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`id_evento`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `eventos.id`. Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`id_arquivo`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `arquivos.id` (para anexar propostas, opcional). Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`created_at`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data e hora de criação do registro.</td>
+          </tr>
+          <tr>
+            <td>`updated_at`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data e hora da última atualização do registro.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`atracoes`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`nome`</td>
+            <td>`STRING`</td>
+            <td>Nome da atração (ex: Banda, DJ, Mágico).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`servicos`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`nome`</td>
+            <td>`STRING`</td>
+            <td>Nome do serviço (ex: Fotografia, Decoração, Catering).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`buffets`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`slug`</td>
+            <td>`STRING`</td>
+            <td>Slug para URL amigável do buffet.</td>
+          </tr>
+          <tr>
+            <td>`capacidade_total`</td>
+            <td>`INTEGER`</td>
+            <td>Capacidade máxima de pessoas do buffet (opcional).</td>
+          </tr>
+          <tr>
+            <td>`area_total`</td>
+            <td>`DOUBLE`</td>
+            <td>Área total do buffet em metros quadrados (opcional).</td>
+          </tr>
+          <tr>
+            <td>`horario_atendimento`</td>
+            <td>`STRING`</td>
+            <td>Horário de atendimento durante a semana (opcional).</td>
+          </tr>
+          <tr>
+            <td>`horario_atendimento_fds`</td>
+            <td>`STRING`</td>
+            <td>Horário de atendimento nos finais de semana (opcional).</td>
+          </tr>
+          <tr>
+            <td>`sobre`</td>
+            <td>`TEXT`</td>
+            <td>Descrição detalhada sobre o buffet (opcional).</td>
+          </tr>
+          <tr>
+            <td>`id_entidade`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `entidades.id`. Relacionamento: N:1.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`buffet_galerias`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`id_buffet`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `buffets.id`. Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`id_arquivo`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `arquivos.id`. Relacionamento: N:1.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`buffet_detalhes`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`id_buffet`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `buffets.id`. Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`id_atracao`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `atracoes.id` (opcional). Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`id_servico`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `servicos.id` (opcional). Relacionamento: N:1.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`cupons`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`codigo`</td>
+            <td>`STRING`</td>
+            <td>Código único do cupom.</td>
+          </tr>
+          <tr>
+            <td>`descricao`</td>
+            <td>`STRING`</td>
+            <td>Descrição do cupom (opcional).</td>
+          </tr>
+          <tr>
+            <td>`valor`</td>
+            <td>`STRING`</td>
+            <td>Valor do desconto (pode ser fixo ou percentual).</td>
+          </tr>
+          <tr>
+            <td>`porcentagem`</td>
+            <td>`STRING`</td>
+            <td>Indica se o valor é percentual (`0` para fixo, `1` para percentual).</td>
+          </tr>
+          <tr>
+            <td>`data_inicio`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data e hora de início da validade do cupom.</td>
+          </tr>
+          <tr>
+            <td>`data_fim`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data e hora de fim da validade do cupom.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`cupon_utilizados`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`valor`</td>
+            <td>`DOUBLE`</td>
+            <td>Valor do cupom utilizado.</td>
+          </tr>
+          <tr>
+            <td>`id_cupon`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `cupons.id`. Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`id_entidade`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `entidades.id`. Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`created_at`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data e hora de utilização do cupom.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>**`api_tokens`**</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>`id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave primária auto-incrementável.</td>
+          </tr>
+          <tr>
+            <td>`user_id`</td>
+            <td>`INTEGER`</td>
+            <td>Chave estrangeira, referência `usuarios.id`. Relacionamento: N:1.</td>
+          </tr>
+          <tr>
+            <td>`name`</td>
+            <td>`STRING`</td>
+            <td>Nome do token.</td>
+          </tr>
+          <tr>
+            <td>`type`</td>
+            <td>`STRING`</td>
+            <td>Tipo do token (ex: "auth").</td>
+          </tr>
+          <tr>
+            <td>`token`</td>
+            <td>`STRING`</td>
+            <td>Valor do token (único).</td>
+          </tr>
+          <tr>
+            <td>`expires_at`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data e hora de expiração do token (opcional).</td>
+          </tr>
+          <tr>
+            <td>`created_at`</td>
+            <td>`TIMESTAMP`</td>
+            <td>Data e hora de criação do token.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="apis">
+          <h1>APIs</h1>
+          <p>Esta seção detalha os endpoints da API utilizados pelo sistema, cobrindo operações relacionadas a usuários,
+        buffets, cupons, planos, e funcionalidades. Para a maioria dos endpoints, é necessário um token de autenticação
+        Bearer, obtido após o login do usuário.</p>
+
+          <h2 id="autenticacao">Autenticação</h2>
+          <p>Para acessar a maioria dos endpoints, um token <strong>Bearer</strong> deve ser incluído no cabeçalho da
+        requisição, no formato <code>Authorization: Bearer [USER_TOKEN]</code>. O <code>USER_TOKEN</code> é armazenado
+        no <code>localStorage</code> após o login bem-sucedido.</p>
+
+          <h2 id="formato-resposta">Formato das Respostas</h2>
+          <p>Todas as respostas da API, salvo exceções específicas, são retornadas em formato JSON. Em caso de erro, a
+        resposta geralmente incluirá um objeto <code>error</code> contendo detalhes sobre o problema.</p>
+
+          <h2 id="endpoints-usuarios">Endpoints de Usuários</h2>
+          <ul>
+             
+                <h3>`POST /usuarios`</h3>
+                <p>Cria um novo usuário no sistema.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/usuarios`</li>
+                    <li><strong>Método:</strong> `POST`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Corpo da Requisição (JSON):</strong>
+                        <ul>
+                            <li>`nome`: string (nome do usuário)</li>
+                            <li>`email`: string (email do usuário)</li>
+                            <li>`password`: string (senha do usuário)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados do usuário criado.</li>
+                    <li><strong>Resposta de Erro:</strong> Objeto `error` com detalhes.</li>
+                  </ul>
+             
+
+             
+                <h3>`GET /enderecos/{id}`</h3>
+                <p>Retorna o endereço de um buffet específico pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/enderecos/{id}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id`: number (ID do buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados do endereço.</li>
+                    <li><strong>Resposta de Erro:</strong> Objeto `error` com detalhes.</li>
+                  </ul>
+             
+
+             
+                <h3>`PUT /usuarios/{id_user}` (V2)</h3>
+                <p>Deleta (soft delete) um usuário, alterando seu tipo.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_V2_URL_BUSCABUFFET}/usuarios/{id_user}`</li>
+                    <li><strong>Método:</strong> `PUT`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id_user`: number (ID do usuário a ser deletado)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Corpo da Requisição (JSON):</strong>
+                        <ul>
+                            <li>`tipo`: string (novo tipo do usuário, ex: 'deletado')</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Resposta da operação.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+
+             
+                <h3>`PUT /usuarios/restore/{id_user}` (V2)</h3>
+                <p>Restaura um usuário "deletado" (soft delete).</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_V2_URL_BUSCABUFFET}/usuarios/restore/{id_user}`</li>
+                    <li><strong>Método:</strong> `PUT`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id_user`: number (ID do usuário a ser restaurado)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Corpo da Requisição (JSON):</strong>
+                        <ul>
+                            <li>`tipo`: string (novo tipo do usuário após restauração)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Resposta da operação.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+
+             
+                <h3>`GET /companies/{documento}` (Validação CNPJ)</h3>
+                <p>Valida um CNPJ utilizando uma API externa (RapidAPI).</p>
+                <ul>
+                    <li><strong>URL:</strong> `https://consulta-cnpj-gratis.p.rapidapi.com/companies/{documento}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Headers `x-rapidapi-host` e `x-rapidapi-key`)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`documento`: string (CNPJ a ser validado)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados do CNPJ.</li>
+                    <li><strong>Resposta de Erro:</strong> Objeto `error` com detalhes.</li>
+                  </ul>
+             
+
+             
+                <h3>`POST /usuarios/validate`</h3>
+                <p>Valida os dados de um novo usuário, incluindo nome, email, senha e documento.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/usuarios/validate`</li>
+                    <li><strong>Método:</strong> `POST`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Corpo da Requisição (JSON):</strong>
+                        <ul>
+                            <li>`nome`: string</li>
+                            <li>`email`: string</li>
+                            <li>`password`: string</li>
+                            <li>`documento`: string</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados validados.</li>
+                    <li><strong>Resposta de Erro:</strong> Objeto `error` com detalhes.</li>
+                  </ul>
+             
+                <h3>`POST /usuarios/login`</h3>
+                <p>Realiza o login de um usuário e retorna o token de autenticação.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/usuarios/login`</li>
+                    <li><strong>Método:</strong> `POST`</li>
+                    <li><strong>Autenticação:</strong> Nenhuma (Este endpoint retorna o token)</li>
+                    <li><strong>Corpo da Requisição (JSON):</strong>
+                        <ul>
+                            <li>`email`: string (email do usuário)</li>
+                            <li>`password`: string (senha do usuário)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Token e dados do usuário.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`POST /usuarios/reset`</h3>
+                <p>Reseta a senha de um usuário utilizando email e token de reset.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/usuarios/reset`</li>
+                    <li><strong>Método:</strong> `POST`</li>
+                    <li><strong>Autenticação:</strong> Nenhuma (ou pode ser necessária dependendo da lógica do token
+            de reset)</li>
+                    <li><strong>Corpo da Requisição (JSON):</strong>
+                        <ul>
+                            <li>`email`: string (email do usuário)</li>
+                            <li>`token`: string (token de reset de senha)</li>
+                            <li>`password`: string (nova senha)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Resposta da operação.</li>
+                    <li><strong>Resposta de Erro:</strong> Objeto `error` com detalhes.</li>
+                  </ul>
+             
+                <h3>`GET /usuarios/{userId}`</h3>
+                <p>Obtém os dados de um usuário específico pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/usuarios/{userId}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`userId`: number (ID do usuário)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados do usuário.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`PUT /usuarios/{userId}`</h3>
+                <p>Edita os dados de um usuário existente.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/usuarios/{userId}`</li>
+                    <li><strong>Método:</strong> `PUT`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`userId`: number (ID do usuário a ser editado)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Corpo da Requisição (JSON):</strong> Objeto com os campos do usuário a serem
+            atualizados (ex: `nome`, `email`, `password`).</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados atualizados do usuário.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /usuarios` (V2)</h3>
+                <p>Retorna uma lista de usuários (geralmente para uso interno/administrador).</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_V2_URL_BUSCABUFFET}/usuarios`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de usuários.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /usuariosAdmin` (V2)</h3>
+                <p>Retorna uma lista de usuários para uso específico por administradores.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_V2_URL_BUSCABUFFET}/usuariosAdmin`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de usuários administradores.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`POST /notifications/email/admin`</h3>
+                <p>Envia notificações por email para administradores.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/notifications/email/admin`</li>
+                    <li><strong>Método:</strong> `POST`</li>
+                    <li><strong>Autenticação:</strong> Não explícita no código fornecido para este método, mas
+            provavelmente requer token.</li>
+                    <li><strong>Corpo da Requisição (JSON):</strong>
+                        <ul>
+                            <li>`titulo`: string (título da notificação)</li>
+                            <li>`descricao`: string (descrição da notificação)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Confirmação do envio.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+
+            </ul>
+
+          <h2 id="endpoints-buffets">Endpoints de Buffets</h2>
+          <ul>
+             
+                <h3>`GET /buffets`</h3>
+                <p>Retorna uma lista de todos os buffets, com ordenação por destaque e plano, e filtragem por status
+          de assinatura e endereço.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/buffets`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Nenhuma (utiliza HTTP.request que pode ou não ter autenticação
+            implícita, mas o exemplo não mostra)</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Array de objetos buffet filtrados e ordenados.
+          </li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /buffets/buffet/{buffetId}`</h3>
+                <p>Retorna os dados de um buffet específico pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/buffets/buffet/{buffetId}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`buffetId`: number (ID do buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados do buffet.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /buffets/{buffetId}`</h3>
+                <p>Retorna os dados de uma entidade buffet pelo seu ID (possivelmente dados mais gerais da entidade).
+        </p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/buffets/{buffetId}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`buffetId`: number (ID da entidade buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados da entidade buffet.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /buffets/slug/{slug}`</h3>
+                <p>Retorna os dados de um buffet específico pelo seu slug (nome amigável na URL).</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/buffets/slug/{slug}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`slug`: string (slug do buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados do buffet.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /buffets?q={search}`</h3>
+                <p>Retorna buffets filtrados por termo de busca, com a mesma ordenação por destaque e plano.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/buffets?q={search}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de Query:</strong>
+                        <ul>
+                            <li>`q`: string (termo de busca)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Array de objetos buffet filtrados e ordenados.
+          </li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /buffets/detalhes/{buffetId}`</h3>
+                <p>Retorna os detalhes de um buffet (atrações, serviços, etc.) pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/buffets/detalhes/{buffetId}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`buffetId`: number (ID do buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Detalhes do buffet.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`POST /buffets` (V2)</h3>
+                <p>Cria um novo registro de buffet no sistema.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_V2_URL_BUSCABUFFET}/buffets`</li>
+                    <li><strong>Método:</strong> `POST`</li>
+                    <li><strong>Autenticação:</strong> Não é exigido Bearer Token no código, mas o envio de
+            notificação sugere privilégios.</li>
+                    <li><strong>Corpo da Requisição (JSON):</strong>
+                        <ul>
+                            <li>`id_entidade`: number (ID da entidade associada)</li>
+                            <li>`slug`: string (slug amigável)</li>
+                            <li>`capacidade_total`: number</li>
+                            <li>`area_total`: string</li>
+                            <li>`horario_atendimento`: string</li>
+                            <li>`horario_atendimento_fds`: string</li>
+                            <li>`sobre`: string (descrição)</li>
+                            <li>`youtube`: string (link do YouTube)</li>
+                            <li>`status`: string (status do buffet)</li>
+                            <li>`documento`: string (opcional, documento relacionado)</li>
+                            <li>`redes_sociais`: array de objetos `{ descricao: string, tipo: string }`</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados do buffet criado.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`PUT /buffets/{id}` (V2)</h3>
+                <p>Edita os dados de um buffet existente pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_V2_URL_BUSCABUFFET}/buffets/{id}`</li>
+                    <li><strong>Método:</strong> `PUT`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id`: number (ID do buffet a ser editado)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Corpo da Requisição (JSON):</strong> Objeto com os campos do buffet a serem
+            atualizados.</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados atualizados do buffet.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`PUT /buffets/detalhes/{id}`</h3>
+                <p>Edita as atrações e serviços de um buffet.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/buffets/detalhes/{id}`</li>
+                    <li><strong>Método:</strong> `PUT`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id`: number (ID do buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Corpo da Requisição (JSON):</strong> Dados das atrações e serviços.</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados atualizados.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`POST /buffets/detalhes` (V2)</h3>
+                <p>Adiciona atrações e serviços a um buffet.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_V2_URL_BUSCABUFFET}/buffets/detalhes`</li>
+                    <li><strong>Método:</strong> `POST`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Corpo da Requisição (JSON):</strong> Dados das atrações e serviços.</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados adicionados.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`DELETE /buffets/{id_buffet}/detalhes`</h3>
+                <p>Deleta as atrações e serviços associados a um buffet.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/buffets/{id_buffet}/detalhes`</li>
+                    <li><strong>Método:</strong> `DELETE`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id_buffet`: number (ID do buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Confirmação da exclusão.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`POST /enderecos/{idBuffet}` (V2)</h3>
+                <p>Cria um endereço para um buffet específico.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_V2_URL_BUSCABUFFET}/enderecos/{idBuffet}`</li>
+                    <li><strong>Método:</strong> `POST`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`idBuffet`: number (ID do buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Corpo da Requisição (JSON):</strong> Dados do endereço (ex: `rua`, `numero`, `cep`,
+            `cidade`, `estado`).</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados do endereço criado.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`PUT /enderecos/{idBuffet}` (V2)</h3>
+                <p>Edita o endereço de um buffet específico.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_V2_URL_BUSCABUFFET}/enderecos/{idBuffet}`</li>
+                    <li><strong>Método:</strong> `PUT`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`idBuffet`: number (ID do buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Corpo da Requisição (JSON):</strong> Dados do endereço a serem atualizados.</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados atualizados do endereço.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+            </ul>
+
+          <h2 id="endpoints-gerais">Endpoints de Dados Gerais (Serviços, Atrações, Endereços, etc.)</h2>
+          <ul>
+             
+                <h3>`GET /servicos/{id}`</h3>
+                <p>Retorna os serviços associados a um buffet pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/servicos/{id}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id`: number (ID do buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de serviços.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /segurancas/{id}`</h3>
+                <p>Retorna os itens de segurança associados a um buffet pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/segurancas/{id}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id`: number (ID do buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de itens de segurança.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /atracoes/{id}`</h3>
+                <p>Retorna as atrações associadas a um buffet pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/atracoes/{id}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id`: number (ID do buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de atrações.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /categorias/entidade/{id}`</h3>
+                <p>Retorna as categorias associadas a uma entidade (buffet) pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/categorias/entidade/{id}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id`: number (ID da entidade)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de categorias.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`DELETE /categorias/entidade/{id_buffet}`</h3>
+                <p>Deleta as categorias associadas a um buffet.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/categorias/entidade/{id_buffet}`</li>
+                    <li><strong>Método:</strong> `DELETE`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id_buffet`: number (ID do buffet)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Confirmação da exclusão.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`DELETE /arquivos/{id_file}`</h3>
+                <p>Deleta um arquivo pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/arquivos/{id_file}`</li>
+                    <li><strong>Método:</strong> `DELETE`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id_file`: number (ID do arquivo a ser deletado)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Confirmação da exclusão.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /enderecos/estados/{idState}/cidades`</h3>
+                <p>Retorna uma lista de cidades dado o ID de um estado.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/enderecos/estados/{idState}/cidades`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`idState`: number (ID do estado)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de cidades.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /enderecos/cidades/estados/{idState}` (V2)</h3>
+                <p>Retorna uma lista de cidades dado o ID de um estado (versão 2).</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_V2_URL_BUSCABUFFET}/enderecos/cidades/estados/{idState}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`idState`: number (ID do estado)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de cidades.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /enderecos/estados`</h3>
+                <p>Retorna uma lista de todos os estados cadastrados no banco de dados.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/enderecos/estados`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de estados.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /estados-filtro` (V2)</h3>
+                <p>Retorna uma lista de estados para filtros de buffets.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_V2_URL_BUSCABUFFET}/estados-filtro`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de estados para filtro.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /atracoes`</h3>
+                <p>Retorna todas as atrações cadastradas no sistema.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/atracoes`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de atrações.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /servicos`</h3>
+                <p>Retorna todos os serviços cadastrados no sistema.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/servicos`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de serviços.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /segurancas`</h3>
+                <p>Retorna todos os itens de segurança cadastrados no sistema.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/segurancas`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de itens de segurança.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+            </ul>
+
+          <h2 id="endpoints-cupons">Endpoints de Cupons</h2>
+          <ul>
+             
+                <h3>`GET /cupons`</h3>
+                <p>Retorna uma lista de todos os cupons cadastrados.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/cupons`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de cupons.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`POST /cupons`</h3>
+                <p>Adiciona um novo cupom.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/cupons`</li>
+                    <li><strong>Método:</strong> `POST`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Content-Type:</strong> `multipart/form-data` (apesar de receber JSON, o código indica
+            multipart)</li>
+                    <li><strong>Corpo da Requisição:</strong> Dados do cupom (conforme interface `addCupom`).</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados do cupom adicionado.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`PUT /cupons/{index}`</h3>
+                <p>Edita um cupom existente pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/cupons/{index}`</li>
+                    <li><strong>Método:</strong> `PUT`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Content-Type:</strong> `multipart/form-data` (apesar de receber JSON, o código indica
+            multipart)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`index`: number (ID do cupom a ser editado)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Corpo da Requisição:</strong> Dados do cupom (conforme interface `addCupom`).</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados atualizados do cupom.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`DELETE /cupons/{id}`</h3>
+                <p>Deleta um cupom pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/cupons/{id}`</li>
+                    <li><strong>Método:</strong> `DELETE`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id`: number (ID do cupom a ser deletado)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Confirmação da exclusão.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`POST /cupons/utilizar/{id_cupom}/{id_entidade}`</h3>
+                <p>Utiliza um cupom para uma entidade específica.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/cupons/utilizar/{id_cupom}/{id_entidade}`</li>
+                    <li><strong>Método:</strong> `POST`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id_cupom`: number (ID do cupom)</li>
+                            <li>`id_entidade`: number (ID da entidade que está utilizando o cupom)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Corpo da Requisição (JSON):</strong>
+                        <ul>
+                            <li>`codigo`: string (código do cupom)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Confirmação do uso do cupom.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+            </ul>
+
+          <h2 id="endpoints-planos">Endpoints de Planos</h2>
+          <ul>
+             
+                <h3>`GET /planos`</h3>
+                <p>Retorna uma lista de todos os planos de assinatura.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/planos`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Nenhuma (utiliza HTTP.request)</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de planos.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`POST /planos/`</h3>
+                <p>Adiciona um novo plano.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/planos/`</li>
+                    <li><strong>Método:</strong> `POST`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Content-Type:</strong> `multipart/form-data` (apesar de receber JSON, o código indica
+            multipart)</li>
+                    <li><strong>Corpo da Requisição:</strong> Dados do plano (conforme interface `addPlan`).</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados do plano adicionado.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`PUT /planos/{index}`</h3>
+                <p>Edita um plano existente pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/planos/{index}`</li>
+                    <li><strong>Método:</strong> `PUT`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`index`: number (ID do plano a ser editado)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Corpo da Requisição:</strong> Dados do plano (conforme interface `addPlan`).</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados atualizados do plano.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`POST /planos/funcionalidades`</h3>
+                <p>Cria uma nova funcionalidade para um plano.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/planos/funcionalidades`</li>
+                    <li><strong>Método:</strong> `POST`</li>
+                    <li><strong>Autenticação:</strong> Nenhuma (utiliza HTTP.request, mas provavelmente exige token)
+          </li>
+                    <li><strong>Corpo da Requisição:</strong> Dados da funcionalidade (conforme interface
+            `addFunctionalities`).</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados da funcionalidade criada.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+            </ul>
+
+          <h2 id="endpoints-eventos">Endpoints de Eventos</h2>
+          <ul>
+             
+                <h3>`PUT /eventos/{id}`</h3>
+                <p>Edita um evento existente pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/eventos/{id}`</li>
+                    <li><strong>Método:</strong> `PUT`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id`: number (ID do evento a ser editado)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Corpo da Requisição (JSON):</strong> Dados do evento a serem atualizados.</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados atualizados do evento.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+            </ul>
+
+          <h2 id="endpoints-assinaturas">Endpoints de Assinaturas</h2>
+          <ul>
+             
+                <h3>`GET /assinaturas`</h3>
+                <p>Retorna uma lista de todas as assinaturas registradas.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/assinaturas`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Lista de assinaturas.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+                <h3>`GET /assinaturas/{id}`</h3>
+                <p>Retorna os detalhes de uma assinatura específica pelo seu ID.</p>
+                <ul>
+                    <li><strong>URL:</strong> `${API_URL_BUSCABUFFET}/assinaturas/{id}`</li>
+                    <li><strong>Método:</strong> `GET`</li>
+                    <li><strong>Autenticação:</strong> Necessária (Bearer Token)</li>
+                    <li><strong>Parâmetros de URL:</strong>
+                        <ul>
+                            <li>`id`: number (ID da assinatura)</li>
+                          </ul>
+                      </li>
+                    <li><strong>Resposta de Sucesso (200 OK):</strong> Dados da assinatura.</li>
+                    <li><strong>Resposta de Erro:</strong> Erro da requisição.</li>
+                  </ul>
+             
+            </ul>
+    </section>
+    <section id="home">
+      <h1>Home</h1>
+      <img src="images/home.jpg" alt="Página Home" />
+      <p>A página <strong>Home</strong> é a porta de entrada do sistema Busca Buffet. Ela tem como objetivo principal
+        apresentar aos usuários uma visão geral dos buffets disponíveis e permitir que eles encontrem rapidamente o que
+        procuram através da funcionalidade de busca.</p>
+
+      <h3>Funcionalidades</h3>
+      <ul>
+        <li><strong>Listagem de Buffets</strong>: A página exibe uma lista de buffets cadastrados na plataforma.</li>
+        <li><strong>Busca por Nome</strong>: Usuários podem pesquisar buffets utilizando o campo de busca. A busca é
+          realizada pelo <strong>nome da entidade</strong> (nome do buffet).</li>
+      </ul>
+
+      <h3>Dados Exibidos</h3>
+      <p>Para cada buffet listado na página Home, as seguintes informações são carregadas e apresentadas ao usuário:</p>
+      <ul>
+        <li><strong>Informações do Buffet (`Buffet_1.default`)</strong>:
+          <ul>
+            <li>`slug`: Para a construção de URLs amigáveis.</li>
+            <li>`capacidade_total` (opcional): Capacidade de pessoas que o buffet pode acomodar.</li>
+            <li>`area_total` (opcional): Área total do espaço.</li>
+            <li>`horario_atendimento` (opcional): Horário de funcionamento durante a semana.</li>
+            <li>`horario_atendimento_fds` (opcional): Horário de funcionamento nos finais de semana.</li>
+            <li>`sobre` (opcional): Uma breve descrição sobre o buffet.</li>
+          </ul>
+        </li>
+        <li><strong>Dados da Entidade (`entidade`)</strong>:
+          <ul>
+            <li>`nome`: O nome principal do buffet/entidade.</li>
+            <li>`documento` (opcional): CPF/CNPJ da entidade.</li>
+            <li>`aceitou_termo`: Indica se a entidade aceitou os termos de uso.</li>
+            <li>`destacado`: Indica se o buffet está em destaque na plataforma.</li>
+            <li><strong>Contatos (`contatos`)</strong>: Lista de contatos da entidade (telefone, e-mail, etc.).</li>
+            <li><strong>Redes Sociais (`redesSociais`)</strong>: Lista de redes sociais da entidade.</li>
+            <li><strong>Assinaturas (`assinaturas`)</strong>: Informações sobre a assinatura do buffet na plataforma.
+              <ul>
+                <li><strong>Plano (`plano`)</strong>: Detalhes do plano de assinatura (nome, valor mensal/anual).</li>
+              </ul>
+            </li>
+            <li><strong>Endereços (`enderecos`)</strong>: Detalhes do endereço do buffet.
+              <ul>
+                <li><strong>Endereço (`endereco`)</strong>: Informações como CEP, bairro, rua, número, complemento.
+                  <ul>
+                    <li><strong>Cidade (`cidade`)</strong>: Nome e código da cidade.
+                      <ul>
+                        <li><strong>Estado (`estado`)</strong>: Nome, sigla e código do estado.</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Galeria de Imagens (`galerias`)</strong>: Imagens associadas ao buffet para exibição.
+          <ul>
+            <li><strong>Arquivo (`arquivo`)</strong>: Caminho (`path`) e nome do arquivo da imagem.</li>
+          </ul>
+        </li>
+        <li><strong>Categorias do Buffet (`categorias`)</strong>: Categorias às quais o buffet pertence (ex: Casamento,
+          Aniversário, Eventos Corporativos).
+          <ul>
+            <li><strong>Categoria (`categoria`)</strong>: Nome e descrição da categoria.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>Funcionamento da Requisição</h3>
+      <p>Quando a página é carregada ou uma busca é realizada, a API faz uma requisição para obter os dados dos buffets.
+      </p>
+      <ul>
+        <li>Se um parâmetro de consulta <code>q</code> for fornecido na URL (ex: <code>?q=nome do buffet</code>), a
+          listagem será filtrada para incluir apenas buffets cujo nome da entidade contenha o termo da busca.</li>
+        <li>A resposta da requisição é um objeto JSON contendo os dados dos buffets.</li>
+      </ul>
+    </section>
+    <section id="buffet">
+      <h1>Buffet</h1>
+      <img src="images/buffet.jpg" alt="Página Buffet" />
+      <p>A página <strong>Buffet</strong> é dedicada à exibição detalhada dos espaços e serviços oferecidos pelos
+        estabelecimentos parceiros do Busca Buffet. Ela permite que os usuários explorem as características de cada
+        buffet individualmente, facilitando a decisão na escolha do local ideal para seus eventos.</p>
+
+      <h3>Propósito e Interação</h3>
+      <ul>
+        <li><strong>Exploração Detalhada</strong>: Esta seção permite aos visitantes aprofundar-se nas especificidades
+          de cada buffet.</li>
+        <li><strong>Listagem Filtrada</strong>: Similar à Home, a página Buffet também pode apresentar uma lista de
+          buffets, mas geralmente com um foco maior em filtros e categorias, ou ser o resultado de uma navegação mais
+          aprofundada.</li>
+      </ul>
+
+      <h3>Informações Apresentadas</h3>
+      <p>Para cada estabelecimento listado ou exibido individualmente na página Buffet, o sistema carrega um conjunto
+        abrangente de dados para enriquecer a experiência do usuário:</p>
+      <ul>
+        <li><strong>Dados Fundamentais do Buffet (<code>Buffet_1.default</code>)</strong>:
+          <ul>
+            <li><code>slug</code>: Utilizado para construir URLs exclusivas e amigáveis para cada perfil de buffet.</li>
+            <li><code>capacidade_total</code> (opcional): Capacidade máxima de convidados que o espaço pode acomodar.
+            </li>
+            <li><code>area_total</code> (opcional): Medida da área total do buffet.</li>
+            <li><code>horario_atendimento</code> (opcional): Horário de funcionamento regular.</li>
+            <li><code>horario_atendimento_fds</code> (opcional): Horário de funcionamento em fins de semana e feriados.
+            </li>
+            <li><code>sobre</code> (opcional): Uma descrição completa do estabelecimento, destacando seus diferenciais e
+              filosofia.</li>
+          </ul>
+        </li>
+        <li><strong>Informações da Entidade Associada (<code>entidade</code>)</strong>:
+          <ul>
+            <li><code>nome</code>: O nome comercial do buffet.</li>
+            <li><code>documento</code> (opcional): Identificador fiscal da entidade (CPF/CNPJ).</li>
+            <li><code>aceitou_termo</code>: Status de aceitação dos termos e condições da plataforma.</li>
+            <li><code>destacado</code>: Indicação se o buffet possui um status de destaque na plataforma.</li>
+            <li><strong>Meios de Contato (<code>contatos</code>)</strong>: Lista de telefones, e-mails e outros canais
+              para comunicação direta.</li>
+            <li><strong>Presença Digital (<code>redesSociais</code>)</strong>: Links para os perfis do buffet nas
+              principais redes sociais.</li>
+            <li><strong>Detalhes da Assinatura (<code>assinaturas</code>)</strong>: Informações sobre o plano de serviço
+              contratado pelo buffet.
+              <ul>
+                <li><strong>Plano Contratado (<code>plano</code>)</strong>: Nome e condições do plano de assinatura
+                  (mensal, anual, funcionalidades).</li>
+              </ul>
+            </li>
+            <li><strong>Localização Completa (<code>enderecos</code>)</strong>: Endereço detalhado do estabelecimento.
+              <ul>
+                <li><strong>Localização Física (<code>endereco</code>)</strong>: Dados como CEP, bairro, rua, número e
+                  complemento.
+                  <ul>
+                    <li><strong>Município (<code>cidade</code>)</strong>: Nome e código da cidade onde o buffet está
+                      localizado.
+                      <ul>
+                        <li><strong>Estado (<code>estado</code>)</strong>: Nome completo, sigla e código do estado
+                          correspondente.</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Conteúdo Visual (<code>galerias</code>)</strong>: Imagens e mídias visuais que representam o buffet.
+          <ul>
+            <li><strong>Arquivo de Mídia (<code>arquivo</code>)</strong>: O caminho (<code>path</code>) e nome do
+              arquivo de cada imagem/vídeo.</li>
+          </ul>
+        </li>
+        <li><strong>Tipos de Eventos e Serviços (<code>categorias</code>)</strong>: Categorias de eventos que o buffet
+          atende e serviços que oferece.
+          <ul>
+            <li><strong>Categoria Específica (<code>categoria</code>)</strong>: Nome e descrição da categoria (ex:
+              Casamentos, Festas Infantis, Eventos Corporativos).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>Comportamento da Requisição</h3>
+      <p>Ao acessar a página Buffet, o sistema realiza uma requisição para carregar os dados.</p>
+      <ul>
+        <li>Se houver um parâmetro de consulta <code>q</code> na URL (ex: <code>?q=buffet xyz</code>), a listagem
+          exibirá apenas buffets cujos nomes de entidade correspondam ao termo de busca.</li>
+        <li>A resposta da API é formatada em JSON, contendo todas as informações detalhadas dos buffets.</li>
+      </ul>
+    </section>
+    <section id="pesquisa">
+      <h1>Pesquisar Buffets</h1>
+      <img src="images/pesquisa.jpg" alt="Busca de Buffets" />
+      <p>A página <strong>Pesquisar Buffets</strong> permite que os usuários explorem os melhores buffets da sua região
+        e refinem sua busca de forma prática e eficiente, garantindo maior visibilidade para todos os buffets da
+        plataforma.</p>
+
+      <h3>Funcionalidades</h3>
+      <ul>
+        <li><strong>Busca por Nome</strong>: Campo dedicado para pesquisar diretamente pelo nome do buffet.</li>
+        <li><strong>Filtros por Categoria</strong>: Permite refinar a busca por categorias específicas como Casamento,
+          Aniversário, Eventos Corporativos, entre outros.</li>
+        <li><strong>Filtros por Localidade</strong>: Os usuários podem selecionar cidades, como São Paulo, para ver
+          buffets na região desejada.</li>
+        <li><strong>Destaques em Primeiro Lugar</strong>: Buffets em destaque na plataforma aparecem no topo da
+          listagem, seguidos pelos demais em ordem sequencial.</li>
+      </ul>
+
+      <h3>Objetivo da Página</h3>
+      <p>Facilitar que os usuários encontrem rapidamente os buffets mais adequados para seu evento, com base em suas
+        preferências e localização. Além disso, essa página é um canal de exposição para todos os buffets cadastrados,
+        aumentando suas chances de serem descobertos e receberem solicitações de orçamento.</p>
+
+      <h3>Comportamento da Busca</h3>
+      <ul>
+        <li>Se for informado um nome no campo de busca, o sistema filtrará a listagem para exibir buffets cujo
+          <strong>nome da entidade</strong> contenha o termo pesquisado.
+        </li>
+        <li>Os filtros aplicados (categoria e cidade) atuam em conjunto para refinar os resultados exibidos.</li>
+        <li>A resposta da busca é exibida dinamicamente com base na seleção dos filtros e critérios fornecidos.</li>
+      </ul>
+    </section>
+
+    <section id="orcamentos">
+      <h1>Orçamentos</h1>
+      <img src="images/orcamentos.jpg" alt="Página Orçamentos" />
+      <p>A página de <strong>Orçamentos</strong> no sistema Busca Buffet é o ponto central para a solicitação e gestão
+        de propostas entre clientes e buffets. Quando um cliente demonstra interesse em um serviço, ele pode solicitar
+        um orçamento diretamente através desta funcionalidade. O sistema, por sua vez, processa essa solicitação e
+        notifica o buffet responsável.</p>
+
+      <h3>Funcionalidade Principal: Criação de Proposta</h3>
+      <p>A principal ação nesta seção é a criação de uma nova proposta (orçamento), que envolve os seguintes passos:</p>
+      <ul>
+        <li><strong>Validação dos Dados</strong>: Antes de criar a proposta, os dados enviados na requisição são
+          validados para garantir sua integridade e conformidade com as regras de negócio.</li>
+        <li><strong>Identificação do Buffet</strong>: O sistema verifica se a entidade (`id_entidade`) associada à
+          proposta realmente corresponde a um perfil de buffet. Caso contrário, a solicitação é recusada.</li>
+        <li><strong>Registro da Proposta</strong>: Uma nova proposta é registrada no banco de dados na tabela
+          `propostas` com as informações fornecidas.</li>
+        <li><strong>Notificação por E-mail</strong>: Após o sucesso na criação da proposta, uma notificação é enviada
+          por e-mail para o usuário associado ao buffet.</li>
+      </ul>
+
+      <h3>Informações da Proposta (<code>Proposta_1.default</code>)</h3>
+      <p>Ao criar uma proposta, as informações essenciais que são persistidas e gerenciadas incluem:</p>
+      <ul>
+        <li>`id_entidade`: O ID da entidade (buffet) para a qual o orçamento é solicitado.</li>
+        <li>Outros campos da tabela `propostas` conforme a estrutura do banco de dados (ex: `status`, `valor`,
+          `data_disponibilidade`, `observacoes`, `id_evento`, `id_arquivo`).</li>
+      </ul>
+
+      <h3>Comunicação e Resposta</h3>
+      <ul>
+        <li><strong>Resposta da API</strong>: Se a proposta for criada com sucesso, a API retorna um status `202
+          Accepted` junto com os detalhes da proposta criada e as informações da entidade (buffet).</li>
+        <li><strong>Envio de E-mail</strong>:
+          <ul>
+            <li>O e-mail é enviado para o endereço cadastrado do <strong>usuário</strong> associado à entidade (buffet).
+            </li>
+            <li>O remetente do e-mail é configurado através da variável de ambiente `EMAIL_FROM`.</li>
+            <li>O assunto do e-mail é "Novo orçamento para você!".</li>
+            <li>O corpo do e-mail é gerado a partir do template `emails/new-proposta-to-cliente`, utilizando o nome
+              fornecido no payload da requisição para personalizar a mensagem.</li>
+          </ul>
+        </li>
+        <li><strong>Tratamento de Erros</strong>: Em caso de falha na validação ou se a entidade indicada não for um
+          buffet, a API retorna um status `400 Bad Request` com uma mensagem de erro apropriada.</li>
+      </ul>
+    </section>
+
+    <section id="anuncie">
+      <h1>Anuncie</h1>
+      <img src="images/anuncie.jpg" alt="Página Anuncie" />
+      <p>A seção <strong>Anuncie</strong> do Busca Buffet é dedicada ao processo de cadastro de novos buffets e outros
+        prestadores de serviço na plataforma. É aqui que os interessados em divulgar seus espaços e serviços realizam o
+        registro, criando sua conta de usuário e as informações iniciais de sua entidade (buffet).</p>
+
+      <h3>Funcionalidade Principal: Cadastro de Nova Entidade e Usuário</h3>
+      <p>O fluxo principal nesta seção é o registro de uma nova entidade (representando o buffet) e o usuário associado
+        a ela. Este processo envolve as seguintes etapas:</p>
+      <ul>
+        <li><strong>Validação dos Dados da Entidade</strong>: Primeiramente, os dados fornecidos para a criação da
+          entidade são validados através do <code>CreateEntidadeValidator_1.default</code>. Isso garante que informações
+          como nome da entidade, documento (CPF/CNPJ, se aplicável) e aceitação dos termos de uso estejam corretas e
+          completas.</li>
+        <li><strong>Validação dos Dados do Usuário</strong>: Em seguida, as informações para a criação do usuário, como
+          e-mail e senha, são validadas pelo <code>CreateUsuarioValidator_1.default</code>. Esta etapa assegura que o
+          e-mail seja válido e que a senha atenda aos requisitos de segurança.</li>
+        <li><strong>Processamento de Validação Interna</strong>: Após a validação dos payloads, um método interno
+          <code>_validate(payloadEntidade, payloadUser)</code> é acionado. Este método é responsável pela lógica de
+          negócio para a criação efetiva da entidade e do usuário, incluindo a associação correta entre eles e a
+          definição do perfil de usuário (provavelmente "Buffet" neste contexto).
+        </li>
+      </ul>
+
+      <h3>Informações Registradas</h3>
+      <p>Durante o processo de "Anuncie", as seguintes informações são coletadas e registradas:</p>
+      <ul>
+        <li><strong>Para a Entidade (<code>entidades</code>):</strong>
+          <ul>
+            <li>Nome do buffet/entidade.</li>
+            <li>Documento (CPF ou CNPJ, se aplicável).</li>
+            <li>Confirmação da aceitação dos termos de uso.</li>
+            <li>Outras informações específicas da entidade, conforme definido no
+              <code>CreateEntidadeValidator_1.default</code>.
+            </li>
+          </ul>
+        </li>
+        <li><strong>Para o Usuário (<code>usuarios</code>):</strong>
+          <ul>
+            <li>Endereço de e-mail (que será o login).</li>
+            <li>Senha (armazenada de forma segura, geralmente como um hash).</li>
+            <li>Associação ao perfil de usuário apropriado (ex: "Buffet").</li>
+            <li>Associação à entidade recém-criada.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>Comunicação e Resposta</h3>
+      <ul>
+        <li><strong>Resposta da API (Sucesso)</strong>: Se o cadastro for concluído com êxito, a API retorna um status
+          <code>200 OK</code>. A resposta JSON conterá um objeto <code>result</code>, indicando o sucesso da operação e,
+          possivelmente, dados do usuário ou entidade criados.
+        </li>
+        <li><strong>Tratamento de Erros</strong>: Em caso de falha em qualquer etapa (validação de dados, erro no
+          processo de criação), a API retorna um status <code>500 Internal Server Error</code>. A resposta JSON incluirá
+          um objeto <code>error</code> com detalhes sobre o problema, e o erro será registrado no console do servidor
+          para depuração.</li>
+      </ul>
+    </section>
+    <section id="sobre-nos">
+      <h1>Sobre Nós</h1>
+      <img src="images/sobre-nos.jpg" alt="Quem somos" />
+
+      <p>A página <strong>Sobre Nós</strong> apresenta informações institucionais da <strong>Busca Buffet</strong>,
+        uma startup de tecnologia especializada em conectar clientes e empresas do setor de eventos. Nesta seção, os
+        visitantes conhecem nossa história, missão e os diferenciais que tornam nossa plataforma um ponto de
+        referência na busca por buffets.</p>
+
+      <p>Fundada com o propósito de <strong>facilitar a organização de eventos</strong>, a Busca Buffet surgiu diante
+        da crescente demanda por soluções digitais que conectem anfitriões a buffets e fornecedores confiáveis.
+        Reunimos em um só lugar dezenas de opções, oferecendo praticidade, agilidade e economia de tempo ao usuário.
+      </p>
+
+      <h3>Quem Somos</h3>
+      <p>Somos uma empresa comprometida em <strong>modernizar o mercado de eventos</strong>. Utilizamos tecnologia
+        para promover negócios, aumentar a visibilidade de buffets e garantir que quem organiza um evento tenha acesso
+        a várias cotações com poucos cliques.</p>
+
+    </section>
+    <section id="privacidade">
+      <h1>Política de Privacidade</h1>
+      <img src="images/politica-privacidade.jpg" alt="Política de Privacidade" />
+
+      <p>A página <strong>Política de Privacidade</strong> apresenta informações institucionais e atualizadas sobre
+        como os dados pessoais dos usuários são coletados, utilizados e protegidos pela plataforma <strong>Busca
+          Buffet</strong>.</p>
+
+      <p>Essa página tem como objetivo garantir a transparência no tratamento das informações dos usuários que
+        acessam, se cadastram ou interagem com o sistema. O conteúdo apresentado é gerenciado pelo
+        <strong>administrador do sistema</strong> e pode ser alterado diretamente através do painel administrativo,
+        permitindo atualizações conforme as necessidades da empresa ou exigências legais.
+      </p>
+
+      <h3>O Que Você Encontra Nesta Página</h3>
+      <ul>
+        <li>Quais dados são coletados e por que.</li>
+        <li>Como os dados são tratados e utilizados.</li>
+        <li>Se e com quem os dados podem ser compartilhados.</li>
+        <li>Direitos dos usuários em relação aos seus dados.</li>
+        <li>Medidas de segurança adotadas para proteção das informações.</li>
+        <li>Informações de contato para solicitações e dúvidas.</li>
+      </ul>
+
+      <p>A <strong>Política de Privacidade</strong> é parte essencial do nosso compromisso com a transparência e a
+        segurança das informações. Recomendamos que os usuários consultem regularmente esta página para se manterem
+        atualizados quanto às práticas da plataforma.</p>
+    </section>
+
+    <section id="termo">
+      <h1>Termos de Uso</h1>
+      <img src="images/termos-de-uso.jpg" alt="Termos de Uso" />
+
+      <p>Esta página institucional apresenta os <strong>Termos de Uso</strong> do site <strong>Busca Buffet</strong> e
+        contém todas as regras, diretrizes e condições que regulam a utilização da plataforma pelos usuários e
+        anunciantes.</p>
+
+      <p>O conteúdo exibido nesta página é gerenciado dinamicamente por meio do painel administrativo do sistema,
+        permitindo que o <strong>administrador da plataforma</strong> possa atualizar o texto a qualquer momento,
+        conforme mudanças jurídicas ou estratégicas.</p>
+
+      <h3>Finalidade da Página</h3>
+      <ul>
+        <li>Informar sobre os direitos e responsabilidades de quem acessa ou utiliza a plataforma.</li>
+        <li>Apresentar regras de uso, acesso, cadastro e interação com os serviços oferecidos.</li>
+        <li>Reforçar o compromisso com a privacidade e proteção de dados.</li>
+        <li>Orientar sobre o uso de cookies, propriedade intelectual e links externos.</li>
+      </ul>
+
+      <p>Ao navegar no site, consideramos que o usuário está de acordo com os termos descritos. Caso discorde de
+        alguma condição, o indicado é que encerre seu acesso imediatamente. Mudanças importantes nesta documentação
+        podem ser comunicadas por e-mail ou notificações, e a versão mais atualizada estará sempre disponível nesta
+        página.</p>
+    </section>
+    <section id="contato">
+      <h1>Contato</h1>
+      <img src="images/contato.jpg" alt="Página Contato" />
+      <p>A página de <strong>Contato</strong> é um ponto crucial para a comunicação direta no sistema Busca Buffet.
+        Ela
+        permite que usuários e parceiros enviem mensagens, dúvidas ou solicitações, garantindo que suas interações
+        sejam
+        devidamente registradas e encaminhadas.</p>
+
+      <h3>Funcionalidade Principal: Envio de Mensagens de Contato</h3>
+      <p>A principal função desta seção é permitir a criação e registro de novos contatos no banco de dados. Veja como
+        funciona:</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: Antes de qualquer processamento, as informações enviadas na
+          requisição
+          são validadas usando o <code>CreateValidator_1.default</code> para garantir que todos os campos obrigatórios
+          e
+          o formato dos dados estejam corretos.</li>
+        <li><strong>Registro do Contato</strong>: Se os dados forem válidos, um novo registro é criado na tabela
+          <code>contatos</code> do banco de dados, persistindo as informações fornecidas pelo usuário.
+        </li>
+      </ul>
+
+      <h3>Informações Registradas (<code>Contato_1.default</code>)</h3>
+      <p>Ao enviar uma mensagem pela página de contato, as informações essenciais que são gravadas incluem:</p>
+      <ul>
+        <li><code>descricao</code>: O conteúdo da mensagem ou o valor do contato (ex: número de telefone, e-mail).
+        </li>
+        <li><code>tipo</code>: O tipo de contato (ex: "email", "telefone", "mensagem_geral").</li>
+        <li><code>id_entidade</code>: O ID da entidade, se a mensagem estiver vinculada a um buffet ou cliente
+          específico.</li>
+        <li>Outros campos da tabela <code>contatos</code> conforme a estrutura do banco de dados.</li>
+      </ul>
+
+      <h3>Comunicação e Resposta</h3>
+      <ul>
+        <li><strong>Resposta da API (Sucesso)</strong>: Se o contato for criado com sucesso, a API retorna um status
+          <code>200 OK</code> juntamente com os dados do item de contato recém-criado.
+        </li>
+        <li><strong>Tratamento de Erros</strong>: Em caso de falha na validação ou outro erro durante o processo, a
+          API
+          retorna um status <code>500 Internal Server Error</code>, fornecendo uma mensagem de erro detalhada para
+          auxiliar na depuração. Erros são registrados no console do servidor.</li>
+      </ul>
+    </section>
+
+    <section id="login">
+      <h1>Login</h1>
+      <img src="images/login.jpg" alt="Página Login" />
+      <p>A página de **Login** é o portal de acesso para usuários cadastrados no sistema Busca Buffet, sejam eles
+        administradores, clientes ou proprietários de buffets. Ela permite que os usuários autentiquem-se para acessar
+        áreas restritas e funcionalidades específicas da plataforma.</p>
+
+      <h3>Funcionalidade Principal: Autenticação de Usuário</h3>
+      <p>O processo de login envolve as seguintes etapas e validações:</p>
+      <ul>
+        <li><strong>Validação dos Dados de Entrada</strong>: Os campos de e-mail e senha enviados pelo usuário são
+          primeiramente validados usando o <code>LoginValidator_1.default</code>, garantindo que estejam no formato
+          correto.</li>
+        <li><strong>Busca do Usuário</strong>: Com base no e-mail fornecido, o sistema tenta encontrar um usuário
+          correspondente no banco de dados.</li>
+        <li><strong>Verificação de Existência do Usuário</strong>: Se nenhum usuário for encontrado com o e-mail
+          informado, a tentativa de login é recusada.</li>
+        <li><strong>Validação da Senha</strong>: A senha fornecida pelo usuário é comparada com o hash da senha
+          armazenado no banco de dados. Esta verificação é realizada de forma segura usando
+          <code>Hash_1.default.verify</code>.
+        </li>
+        <li><strong>Recusa por Senha Inválida</strong>: Se a senha não corresponder, a tentativa de login é recusada.
+        </li>
+        <li><strong>Geração do Token de Autenticação</strong>: Após a validação bem-sucedida do e-mail e da senha, um
+          token de autenticação é gerado para o usuário. Este token é essencial para manter o usuário logado e
+          autorizá-lo a acessar rotas protegidas da API. O token tem uma validade de 10 dias.</li>
+      </ul>
+
+      <h3>Informações Retornadas no Sucesso</h3>
+      <p>Em caso de login bem-sucedido, a API retorna as seguintes informações para o cliente:</p>
+      <ul>
+        <li><strong>Token de Autenticação</strong>: Um objeto JSON contendo o token de acesso e seus metadados (como
+          tempo de expiração).</li>
+        <li><strong>Dados do Usuário</strong>: As informações do usuário autenticado, **com a senha removida por
+          segurança**.</li>
+        <li><strong>Dados do Buffet (se aplicável)</strong>: Se o usuário estiver associado a um buffet, os dados do
+          buffet serão retornados. Caso contrário, será uma string vazia.</li>
+        <li><strong>Dados da Entidade (se aplicável)</strong>: As informações da entidade associada ao usuário (que
+          pode
+          ser um cliente ou um buffet). Caso contrário, será uma string vazia.</li>
+      </ul>
+
+      <h3>Comunicação e Resposta</h3>
+      <ul>
+        <li><strong>Resposta da API (Sucesso)</strong>: Se o login for bem-sucedido, a API retorna um status
+          <code>200 OK</code> com os dados do token, usuário, buffet e entidade.
+        </li>
+        <li><strong>Resposta da API (Falha)</strong>: Se o e-mail ou a senha forem inválidos, a API retorna um status
+          <code>403 Forbidden</code> com a mensagem "Usuário e/ou senha inválidos!".
+        </li>
+      </ul>
+    </section>
+
+<section id="admin">
+      <h1>Administrador</h1>
+      <p>O painel do <strong>Administrador</strong> reúne todas as ferramentas de controle da plataforma Busca Buffet,
+        permitindo a gestão de usuários, assinaturas, configurações e conteúdo institucional.</p>
+
+      <img src="images/dashboard-admin.jpg" alt="Dashboard do Administrador" />
+      <p class="legenda">Visão geral com métricas e atividades do sistema em tempo real.</p>
+
+      <img src="images/buffets-admin.jpg" alt="Gestão de Buffets" />
+      <p class="legenda">Área onde o administrador gerencia todos os buffets cadastrados.</p>
+
+      <img src="images/configuracoes-sistema.jpg" alt="Configurações do Sistema" />
+      <p class="legenda">Interface para editar documentos como Termos de Uso e Política de Privacidade.</p>
+
+      <img src="images/painel-assinaturas-admin.jpg" alt="Painel de Assinaturas - Admin" />
+      <p class="legenda">Controle das assinaturas dos buffets, planos ativos, valores e uso de cupons.</p>
+
+      <img src="images/usuarios-admin.jpg" alt="Usuários Cadastrados" />
+      <p class="legenda">Lista completa de clientes e buffets registrados na plataforma.</p>
+    </section>
+
+    <section id="cliente">
+      <h1>Cliente</h1>
+      <p>No painel do <strong>Cliente</strong>, é possível acompanhar o andamento das solicitações de orçamento,
+        atualizar dados pessoais e visualizar as respostas agrupadas por evento.</p>
+
+      <img src="images/painel-cliente.png" alt="Painel do Cliente" />
+      <p class="legenda">Resumo das últimas propostas respondidas pelos buffets.</p>
+
+      <img src="images/painel-perfil-cliente.jpg" alt="Perfil do Cliente" />
+      <p class="legenda">Área de atualização dos dados pessoais e endereço do cliente.</p>
+
+      <img src="images/eventos.jpg" alt="Eventos e Respostas" />
+      <p class="legenda">Visualização das respostas recebidas, organizadas por evento.</p>
+    </section>
+
+    <section id="buffet">
+      <h1>Buffets</h1>
+      <p>O painel do <strong>Buffet</strong> foi desenvolvido para facilitar a gestão completa dos dados do buffet,
+        controle de orçamentos, plano contratado e presença na plataforma.</p>
+
+      <img src="images/painel-buffet.jpg" alt="Painel Principal do Buffet" />
+      <p class="legenda">Resumo geral de atividade e solicitações recentes.</p>
+
+      <img src="images/painel-perfil-buffet.jpg" alt="Perfil do Buffet" />
+      <p class="legenda">Tela para cadastro e atualização das informações comerciais e de contato.</p>
+
+      <img src="images/painel-orcamentos-buffet.jpg" alt="Orçamentos Recebidos" />
+      <p class="legenda">Gestão dos orçamentos recebidos com status, datas e remetente.</p>
+
+      <img src="images/painel-assinatura-buffet.jpg" alt="Gerenciamento da Assinatura" />
+      <p class="legenda">Área para trocar de plano, cancelar assinatura ou editar dados de cobrança.</p>
+    </section>
+
+    <section id="dashboard">
+      <h1>Dashboard</h1>
+      <img src="images/dashboard-admin.jpg" alt="Painel do Administrador" />
+      <p>A seção <strong>Dashboard</strong> é a central de informações e métricas para os administradores e usuários
+        internos do sistema Busca Buffet. Ela oferece uma visão consolidada de dados importantes, permitindo o
+        acompanhamento de assinaturas, propostas e o número total de entidades cadastradas.</p>
+
+      <h3>Funcionalidades e Dados Exibidos</h3>
+
+      <h4>Listagem de Assinaturas (<code>index</code>)</h4>
+      <p>Este endpoint fornece uma visão geral de todas as assinaturas ativas na plataforma. É útil para
+        administradores
+        acompanharem os planos contratados e as entidades vinculadas.</p>
+      <ul>
+        <li><strong>Dados Retornados</strong>: Uma lista completa de objetos de assinatura.</li>
+        <li><strong>Dados Carregados Automaticamente (<code>preload</code>)</strong>:
+          <ul>
+            <li><strong>Plano (<code>plano</code>)</strong>: Detalhes do plano de assinatura (nome, valor
+              mensal/anual).
+            </li>
+            <li><strong>Entidade (<code>entidade</code>)</strong>: Informações sobre a entidade (buffet/cliente) que
+              possui a assinatura.</li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com a lista de assinaturas.</li>
+      </ul>
+
+      <h4>Detalhes de Assinatura por Entidade (<code>show</code>)</h4>
+      <p>Este endpoint permite buscar os detalhes de uma assinatura específica associada a uma entidade, utilizando o
+        ID
+        da entidade. É útil para verificar o plano de um buffet em particular.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O ID da entidade é validado através do
+          <code>ShowValidator_1.default</code>.
+        </li>
+        <li><strong>Busca da Assinatura</strong>: O sistema procura a assinatura vinculada ao <code>id_entidade</code>
+          fornecido.</li>
+        <li><strong>Dados Carregados Automaticamente (<code>preload</code>)</strong>:
+          <ul>
+            <li><strong>Plano (<code>plano</code>)</strong>: Detalhes do plano de assinatura.</li>
+            <li><strong>Entidade (<code>entidade</code>)</strong>: Informações da entidade.</li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os detalhes da assinatura, se encontrada.</li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", caso a assinatura para o ID
+              da
+              entidade não seja localizada.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Total de Propostas (<code>total</code>)</h4>
+      <p>Este endpoint fornece uma métrica rápida sobre o número total de propostas (orçamentos) cadastradas no
+        sistema.
+        É uma métrica importante para entender o volume de interação e demanda.</p>
+      <ul>
+        <li><strong>Dados Retornados</strong>: Um objeto JSON contendo a chave <code>total</code> com a contagem de
+          todas as propostas na tabela <code>Proposta_2.default</code>.</li>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com o total de propostas.</li>
+      </ul>
+
+      <h4>Total de Entidades (<code>total</code>)</h4>
+      <p>Este endpoint calcula e retorna o número total de entidades (buffets, clientes, etc.) registradas na
+        plataforma. Essa métrica é fundamental para monitorar o crescimento da base de usuários e parceiros.</p>
+      <ul>
+        <li><strong>Dados Retornados</strong>: Um objeto JSON contendo a chave <code>total</code> com a contagem de
+          todas as entidades na tabela <code>Entidade_1.default</code>.</li>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com o total de entidades.</li>
+      </ul>
+    </section>
+    <section id="perfil">
+      <h1>Perfil do Usuário</h1>
+
+      <p>A seção <strong>Perfil do Usuário</strong> no sistema Busca Buffet é onde as informações detalhadas dos
+        usuários são acessadas e gerenciadas. Esta página é fundamental para visualizar os dados associados a cada
+        tipo
+        de perfil, seja ele um administrador, cliente ou buffet.</p>
+
+      <h4>Administrador</h4>
+      <img src="images/dashboard-admin.jpg" alt="Painel do Administrador" />
+      <p>O painel do <strong>administrador</strong> permite o gerenciamento completo da plataforma, incluindo
+        monitoramento de entidades, visualização de assinaturas ativas, controle de propostas, categorias, e
+        alterações em conteúdos institucionais.</p>
+
+      <h4>Cliente</h4>
+      <img src="images/painel-cliente.png" alt="Painel do Cliente" />
+      <p>O painel do <strong>cliente</strong> permite visualizar, gerenciar e acompanhar suas solicitações de
+        orçamento. Os usuários podem verificar propostas enviadas, atualizações de status e histórico de interações
+        com buffets.</p>
+
+      <h4>Buffet</h4>
+      <img src="images/painel-buffet.jpg" alt="Painel do Buffet" />
+      <p>No painel do <strong>buffet</strong>, os responsáveis podem administrar suas informações de perfil, responder
+        solicitações de orçamento, acompanhar estatísticas de desempenho e atualizar a galeria de imagens e
+        categorias.</p>
+
+
+      <h3>Funcionalidade Principal: Consulta de Usuários por Perfil</h3>
+      <p>O método principal nesta seção permite buscar e exibir usuários com base no seu tipo de perfil. Veja como
+        essa
+        funcionalidade opera:</p>
+      <ul>
+        <li><strong>Validação do Parâmetro</strong>: A requisição inicia com a validação do ID do perfil
+          (<code>id_perfil</code>) usando o <code>UsuarioByPerfilValidator_1.default</code>. Isso garante que o ID
+          fornecido seja válido e no formato correto.</li>
+        <li><strong>Consulta ao Banco de Dados</strong>: Após a validação, o sistema consulta a tabela de usuários
+          (<code>User_1.default</code>) para encontrar todos os registros que correspondem ao <code>id_perfil</code>
+          especificado.</li>
+        <li><strong>Carregamento de Dados Relacionados (<code>preload</code>)</strong>: Para fornecer uma visão
+          completa, os dados da entidade (<code>entidade</code>) associada a cada usuário são carregados
+          automaticamente. Isso significa que, além dos dados do usuário, você terá acesso às informações da entidade
+          (como o nome do buffet ou do cliente) a qual ele pertence.</li>
+      </ul>
+
+      <h3>Informações Retornadas</h3>
+      <p>Ao realizar uma consulta bem-sucedida, a API retorna uma lista de objetos de usuário, contendo as seguintes
+        informações para cada um:</p>
+      <ul>
+        <li>Todos os atributos do usuário (ex: <code>id</code>, <code>email</code>, <code>id_perfil</code>).</li>
+        <li>Os dados completos da <strong>entidade</strong> vinculada a esse usuário.</li>
+      </ul>
+
+      <h3>Comunicação e Resposta</h3>
+      <ul>
+        <li><strong>Resposta da API (Sucesso)</strong>: Em caso de sucesso na consulta, a API retorna um status
+          <code>200 OK</code> com uma lista JSON contendo os usuários que correspondem ao perfil solicitado,
+          juntamente
+          com os detalhes de suas entidades.
+        </li>
+        <li><strong>Tratamento de Erros</strong>: Caso a validação dos parâmetros falhe, a API retornará uma resposta
+          de
+          erro apropriada, conforme definido pelo validador.</li>
+      </ul>
+    </section>
+    <section id="assinaturas">
+      <h1>Assinaturas</h1>
+      <p>A seção <strong>Assinaturas</strong> do sistema Busca Buffet é responsável por gerenciar os planos de serviço
+        contratados pelos buffets e outras entidades na plataforma. Ela abrange desde a criação de novas assinaturas
+        até
+        a visualização, edição, exclusão e o monitoramento automático do status dessas assinaturas.</p>
+      <h1>Assinaturas</h1>
+      <img src="images/painel-assinaturas-admin.jpg" alt="Assinaturas - Painel do Administrador" />
+
+      <p>A seção <strong>Assinaturas</strong> do sistema <strong>Busca Buffet</strong> é responsável por gerenciar
+        os planos de serviço contratados pelas entidades cadastradas, como buffets e empresas de eventos. Esta
+        página institucional detalha as funcionalidades disponíveis para administradores e buffets dentro do painel
+        do sistema.</p>
+
+      <h3>Visualização do Administrador</h3>
+      <p>No painel do <strong>administrador</strong>, é possível acompanhar todas as assinaturas ativas e inativas
+        da plataforma. Cada registro apresenta informações como:</p>
+      <ul>
+        <li><strong>Nome da Entidade</strong></li>
+        <li><strong>Plano Contratado</strong> (mensal ou anual)</li>
+        <li><strong>Valor do Plano</strong></li>
+        <li><strong>Uso de Cupons</strong> (quando aplicável)</li>
+        <li><strong>Status da Assinatura</strong> (ativa, cancelada, expirada, etc.)</li>
+      </ul>
+      <p>O administrador também pode editar informações, cancelar uma assinatura e verificar datas importantes de
+        ativação ou renovação.</p>
+
+      <h3>Visualização do Buffet</h3>
+      <img src="images/painel-assinatura-buffet.jpg" alt="Assinatura - Painel do Buffet" />
+      <p>No painel do <strong>buffet</strong>, os responsáveis visualizam os dados da própria assinatura. Entre as
+        funcionalidades disponíveis estão:</p>
+      <ul>
+        <li>Alterar dados do plano contratado</li>
+        <li>Cancelar a assinatura atual, se necessário</li>
+        <li>Ver histórico e status da assinatura</li>
+      </ul>
+      <p>O buffet tem controle direto sobre sua participação na plataforma e pode fazer mudanças sempre que
+        necessário, garantindo autonomia e flexibilidade no gerenciamento da conta.</p>
+
+      <h3>Funcionalidades e Operações</h3>
+
+      <h4>Criar Assinatura (<code>create</code>)</h4>
+      <p>Permite registrar uma nova assinatura para uma entidade na plataforma.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O <code>payload</code> da requisição é validado usando o
+          <code>CreateValidator_1.default</code> para garantir a integridade das informações da assinatura.
+        </li>
+        <li><strong>Registro</strong>: Uma nova entrada é criada na tabela `assinaturas` com os dados fornecidos.
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os atributos da nova assinatura se a criação for
+              bem-sucedida.</li>
+            <li>Retorna um status <code>400 Bad Request</code> com a mensagem de erro em caso de falha na validação
+              ou
+              outro erro durante a criação.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Detalhes da Assinatura por Entidade (<code>show</code>)</h4>
+      <p>Recupera os detalhes de uma assinatura específica associada a uma entidade, utilizando o ID da entidade. É
+        útil
+        para exibir o plano atual de um buffet ou cliente.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O ID da entidade (<code>payload.params.id</code>) é validado pelo
+          <code>ShowValidator_1.default</code>.
+        </li>
+        <li><strong>Busca de Assinatura</strong>: O sistema consulta a tabela `assinaturas` filtrando pelo
+          `id_entidade`.</li>
+        <li><strong>Dados Carregados Automaticamente (<code>preload</code>)</strong>:
+          <ul>
+            <li><strong>Plano (<code>plano</code>)</strong>: Informações detalhadas do plano de assinatura (nome,
+              valores, etc.).</li>
+            <li><strong>Entidade (<code>entidade</code>)</strong>: Detalhes da entidade (buffet/cliente) que possui
+              a
+              assinatura.</li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os detalhes da assinatura, se encontrada.</li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", caso a assinatura para o ID
+              da
+              entidade não seja localizada.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Editar Assinatura (<code>edit</code>)</h4>
+      <p>Permite atualizar os dados de uma assinatura existente.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O <code>payload</code> da requisição é validado usando o
+          <code>EditValidator_1.default</code>.
+        </li>
+        <li><strong>Busca e Atualização</strong>: A assinatura é encontrada pelo seu ID
+          (<code>payload.params.id</code>). Se encontrada, seus atributos são mesclados com os novos dados
+          (`newData`)
+          e
+          salvos no banco de dados.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os atributos atualizados da assinatura.</li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", se a assinatura não for
+              encontrada.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Excluir Assinatura (<code>destroy</code>)</h4>
+      <p>Permite remover uma assinatura do sistema.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O ID da assinatura (<code>payload.params.id</code>) é validado pelo
+          <code>DeleteValidator_1.default</code>.
+        </li>
+        <li><strong>Exclusão</strong>: A assinatura é encontrada pelo seu ID e, se existir, é removida do banco de
+          dados.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com <code>{ status: true }</code> se a exclusão for
+              bem-sucedida.
+            </li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", se a assinatura não for
+              encontrada.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>Monitoramento de Assinaturas (Cron Job)</h3>
+      <p>Além das operações CRUD, o sistema possui um serviço de background (cron job) que monitora automaticamente
+        o
+        status das assinaturas, garantindo que elas estejam sempre atualizadas conforme o provedor de pagamento
+        (PagBank).</p>
+      <ul>
+        <li><strong>Frequência</strong>: O cron job é executado a cada 3 horas (<code>0 */3 * * *</code>).</li>
+        <li><strong>Processo de Verificação (<code>checkAssinaturas</code>)</strong>:
+          <ul>
+            <li>Busca todas as assinaturas no banco de dados que não estão com status "CANCELED" ou "SUSPENDED".
+            </li>
+            <li>Para cada assinatura:
+              <ul>
+                <li><strong>Atraso Aleatório</strong>: Introduz um atraso aleatório entre 30 segundos e 3 minutos
+                  para
+                  evitar sobrecarregar a API do PagBank.</li>
+                <li><strong>Consulta à API PagBank</strong>: Realiza uma requisição GET para a API do PagBank,
+                  utilizando a URL `process.env.PAGBANK_API_URL` e o ID da assinatura externa, autenticando-se com
+                  `process.env.PAGBANK_API_KEY`.</li>
+                <li><strong>Verificação de Erros</strong>: Checa se a resposta da API do Pagbank contém mensagens de
+                  erro.</li>
+                <li><strong>Comparação e Atualização de Status</strong>: Compara o status atual da assinatura no
+                  sistema
+                  com o status retornado pela API do PagBank. Se houver divergência, o status da assinatura é
+                  atualizado
+                  no banco de dados.</li>
+                <li><strong>Log de Atividades</strong>: Mensagens de log são exibidas no console para indicar o
+                  início
+                  da verificação, o status das assinaturas (antigo e novo) e o sucesso ou falha das atualizações.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Tratamento de Erros no Cron</strong>: Erros durante a verificação das assinaturas pelo cron job
+          são
+          registrados no console, mas o processo continua para as demais assinaturas.</li>
+      </ul>
+    </section>
+    <section id="categorias">
+      <h1>Categorias</h1>
+      <img src="images/categorias.jpg" alt="Página Categorias" />
+      <p>A seção <strong>Categorias</strong> do sistema Busca Buffet é crucial para a organização e filtragem dos
+        serviços e tipos de eventos oferecidos pelos buffets parceiros. Ela permite que os buffets se classifiquem e
+        que
+        os usuários encontrem facilmente o que procuram (por exemplo, "Buffets para Casamento", "Espaços para Festa
+        Infantil", "Catering para Eventos Corporativos").</p>
+
+      <h3>Funcionalidades e Operações Comuns</h3>
+      <p>Embora os controladores específicos não tenham sido detalhados, uma seção de gerenciamento de categorias
+        tipicamente oferece as seguintes operações:</p>
+
+      <h4>Listagem de Categorias</h4>
+      <ul>
+        <li>Permite visualizar todas as categorias cadastradas no sistema.</li>
+        <li>Ideal para administradores e para a seleção de categorias pelos buffets.</li>
+        <li><strong>Dados Retornados</strong>: Uma lista de objetos de categoria, geralmente contendo o
+          <code>id</code>,
+          <code>nome</code> e uma <code>descricao</code>.
+        </li>
+      </ul>
+
+      <h4>Criação de Categoria</h4>
+      <ul>
+        <li>Possibilita adicionar novas categorias à plataforma.</li>
+        <li>Normalmente requer o envio do <code>nome</code> da nova categoria e, opcionalmente, uma
+          <code>descricao</code>.
+        </li>
+        <li><strong>Validação de Dados</strong>: Espera-se que haja validação para garantir, por exemplo, que o nome
+          da
+          categoria seja único e que os campos obrigatórios sejam preenchidos.</li>
+      </ul>
+
+      <h4>Edição de Categoria</h4>
+      <ul>
+        <li>Permite a modificação de categorias existentes.</li>
+        <li>Usuários autorizados podem atualizar o <code>nome</code> e a <code>descricao</code> de uma categoria.
+        </li>
+        <li><strong>Validação de Dados</strong>: Validações garantem que as alterações são válidas e não conflitam
+          com
+          categorias existentes.</li>
+      </ul>
+
+      <h4>Exclusão de Categoria</h4>
+      <ul>
+        <li>Oferece a funcionalidade de remover categorias do sistema.</li>
+        <li>Geralmente, há uma verificação para garantir que a categoria não esteja vinculada a buffets ou outros
+          registros antes da exclusão, ou que a remoção seja em cascata.</li>
+      </ul>
+
+      <h3>Relacionamento com Buffets</h3>
+      <p>As categorias são diretamente relacionadas aos buffets, permitindo que cada buffet seja associado a uma ou
+        mais
+        categorias relevantes para seus serviços. Isso é fundamental para a funcionalidade de busca e filtragem da
+        plataforma.</p>
+    </section>
+    <section id="cupons">
+      <h1>Cupons</h1>
+      <img src="images/cupons-admin.jpg" alt="Cupons" />
+      <p>A seção <b>Cupons</b> no sistema Busca Buffet é responsável pelo gerenciamento de códigos promocionais que
+        podem
+        ser oferecidos a clientes ou entidades específicas. Ela permite a criação, visualização, edição, exclusão e,
+        crucialmente, o registro do uso desses cupons.</p>
+
+      <h3>Funcionalidades e Operações</h3>
+
+      <h4>Listagem de Cupons (<code>index</code>)</h4>
+      <p>Este endpoint permite buscar e exibir todos os cupons cadastrados na plataforma. É útil para
+        administradores
+        visualizarem todos os códigos promocionais ativos.</p>
+      <ul>
+        <li><strong>Dados Retornados</strong>: Uma lista completa de objetos de cupom, contendo seus atributos como
+          código, descrição, valor, porcentagem, datas de início e fim.</li>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com a lista de cupons.</li>
+      </ul>
+
+      <h4>Detalhes de um Cupom (<code>show</code>)</h4>
+      <p>Permite visualizar os detalhes de um cupom específico a partir do seu ID.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O ID do cupom (`payload.params.id`) é validado pelo
+          <code>ShowValidator_1.default</code>.
+        </li>
+        <li><strong>Busca do Cupom</strong>: O sistema tenta encontrar o cupom na tabela `cupons`.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os atributos do cupom, se encontrado.</li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", caso o cupom não seja
+              localizado.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Editar Cupom (<code>edit</code>)</h4>
+      <p>Permite atualizar os dados de um cupom existente.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O <code>payload</code> da requisição, incluindo o ID do cupom e os
+          novos dados, é validado pelo <code>EditValidator_1.default</code>.</li>
+        <li><strong>Busca e Atualização</strong>: O cupom é encontrado pelo seu ID. Se encontrado, seus atributos
+          são
+          mesclados com os novos dados (`newData`), excluindo campos não modificáveis ou de rota (como `id` e
+          `params`),
+          e as alterações são salvas no banco de dados.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os atributos atualizados do cupom.</li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", se o cupom não for
+              encontrado.
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Excluir Cupom (<code>destroy</code>)</h4>
+      <p>Permite remover um cupom do sistema.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O ID do cupom (`payload.params.id`) é validado pelo
+          <code>DeleteValidator_1.default</code>.
+        </li>
+        <li><strong>Exclusão</strong>: O cupom é encontrado pelo seu ID e, se existir, é removido do banco de dados.
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com <code>{ status: true }</code> se a exclusão for
+              bem-sucedida.
+            </li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", se o cupom não for
+              encontrado.
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Criar Cupom (<code>create</code>)</h4>
+      <p>Permite registrar um novo cupom promocional na plataforma.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O <code>payload</code> da requisição é validado usando o
+          <code>CreateValidator_1.default</code> para garantir a integridade e validade das informações do cupom.
+        </li>
+        <li><strong>Registro</strong>: Uma nova entrada é criada na tabela `cupons` com os dados fornecidos.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os atributos do novo cupom se a criação for
+              bem-sucedida.</li>
+            <li>Retorna um status <code>400 Bad Request</code> com a mensagem de erro em caso de falha na validação
+              ou
+              outro erro durante a criação.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Usar Cupom (<code>use</code>)</h4>
+      <p>Esta funcionalidade é essencial para registrar a utilização de um cupom por uma entidade específica,
+        controlando o uso e evitando duplicações indevidas.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: Os IDs do cupom e da entidade (`payload.params.id`,
+          `payload.params.id_entidade`) são validados pelo <code>UseValidator_1.default</code>.</li>
+        <li><strong>Busca do Cupom</strong>: O cupom é encontrado pelo seu ID.</li>
+        <li><strong>Verificação de Uso Anterior</strong>: O sistema verifica se a entidade já utilizou o cupom
+          anteriormente. Se sim, retorna uma mensagem indicando o uso prévio.</li>
+        <li><strong>Verificação de Validade por Entidade</strong>: Se o cupom for específico para uma entidade
+          (`item.id_entidade > 0`) e o `id_entidade` fornecido na requisição não corresponder, o uso é recusado.
+        </li>
+        <li><strong>Registro de Uso</strong>: Se todas as validações forem aprovadas, um novo registro é criado na
+          tabela `cupon_utilizados`, associando o cupom, a entidade e o valor utilizado.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os atributos do cupom e do registro de uso, se o
+              cupom
+              for utilizado com sucesso.</li>
+            <li>Retorna um status <code>200 OK</code> com mensagens específicas se o cupom já foi usado pela
+              entidade
+              ou
+              não é válido para ela.</li>
+            <li>Retorna um status <code>404 Not Found</code> se o cupom não for encontrado.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section id="enderecos">
+      <h1>Endereços</h1>
+      <p>A seção <b>Endereços</b> do sistema Busca Buffet é crucial para gerenciar as informações de localização dos
+        buffets e outras entidades, bem como a base de dados de estados e cidades do Brasil. Ela permite consultar,
+        criar, editar e excluir endereços, além de fornecer dados geográficos para facilitar o preenchimento e a
+        busca.
+      </p>
+
+      <h3>Painel do Buffet</h3>
+      <img src="images/painel-perfil-buffet.jpg" alt="Perfil do Buffet" />
+      <p>No perfil do <strong>buffet</strong>, os dados de endereço compõem parte essencial das informações comerciais e
+        de localização exibidas aos usuários da plataforma.</p>
+
+      <h3>Painel do Cliente</h3>
+      <img src="images/painel-perfil-cliente.jpg" alt="Perfil do Cliente" />
+      <p>No perfil do <strong>cliente</strong>, o endereço é utilizado para filtrar resultados de busca e facilitar o
+        envio de propostas mais adequadas à sua região.</p>
+
+      <h3>Funcionalidades e Operações</h3>
+
+      <h4>Listagem de Estados (<code>estados</code>)</h4>
+      <p>Este endpoint retorna uma lista de todos os estados cadastrados no sistema. É útil para preencher campos de
+        seleção de estado em formulários.</p>
+      <ul>
+        <li><strong>Dados Retornados</strong>: Uma lista de objetos de estado, contendo informações como `id`,
+          `nome`
+          e
+          `uf`.</li>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com a lista de estados.</li>
+      </ul>
+
+      <h4>Listagem de Cidades por Estado (<code>showCities</code>)</h4>
+      <p>Permite buscar todas as cidades pertencentes a um estado específico, ordenadas alfabeticamente pelo nome.
+        Essencial para formulários de endereço que dependem da seleção de um estado primeiro.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O ID do estado (`payload.params.id`) é validado pelo
+          <code>EstadoCidadesValidator_1.default</code>.
+        </li>
+        <li><strong>Busca de Cidades</strong>: O sistema consulta a tabela `cidades` filtrando pelo `id_estado` e
+          ordenando por nome.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com a lista de cidades, se encontradas.</li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", caso nenhuma cidade seja
+              encontrada para o estado.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Busca de Cidade por Nome (<code>showByName</code>)</h4>
+      <p>Permite encontrar uma cidade específica a partir do seu nome. Útil para autocompletar ou validação de
+        cidades.
+      </p>
+      <ul>
+        <li><strong>Parâmetro de Entrada</strong>: O nome da cidade (`request.params().nome`), que é decodificado
+          para
+          lidar com caracteres especiais em URLs.</li>
+        <li><strong>Busca da Cidade</strong>: O sistema consulta a tabela `cidades` pelo nome.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com o objeto da cidade se exatamente uma cidade for
+              encontrada.
+            </li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found" se nenhuma ou mais de uma
+              cidade
+              for encontrada.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Listagem de Endereços de uma Entidade (<code>index</code>)</h4>
+      <p>Retorna todos os endereços associados a uma entidade específica (atualmente, fixado para `id_entidade =
+        104`
+        no
+        exemplo do controlador). Esta funcionalidade é fundamental para buffets que possuem múltiplos endereços ou
+        para
+        visualizar as localizações de um parceiro.</p>
+      <ul>
+        <li><strong>Dados Retornados</strong>: Uma lista de objetos de endereço, contendo detalhes do endereço
+          físico
+          e
+          as informações de relacionamento com a entidade (tipo, telefone, email).</li>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com a lista de endereços.</li>
+      </ul>
+
+      <h4>Detalhes de um Endereço (<code>show</code>)</h4>
+      <p>Permite visualizar os detalhes de um endereço específico a partir do seu ID.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O ID do endereço (`payload.params.id`) é validado pelo
+          <code>ShowValidator_1.default</code>.
+        </li>
+        <li><strong>Busca do Endereço</strong>: O sistema tenta encontrar o endereço na tabela `enderecos`.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os atributos do endereço, se encontrado.</li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", caso o endereço não seja
+              localizado.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Editar Endereço (<code>edit</code>)</h4>
+      <p>Permite atualizar as informações de um endereço existente e seus dados de relacionamento com a entidade.
+      </p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O `payload` da requisição, incluindo o ID do endereço e os novos
+          dados,
+          é validado pelo <code>EditValidator_1.default</code>.</li>
+        <li><strong>Busca e Atualização</strong>: O endereço é encontrado pelo seu ID. Além disso, a associação
+          `EnderecoEntidade` também é buscada. Os dados do `endereco` são mesclados com o `payload` (excluindo
+          campos
+          específicos), e os dados do `entidadeEndereco` (tipo, telefone, email) são atualizados separadamente.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os atributos atualizados do endereço e da sua
+              associação
+              com a entidade.</li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", se o endereço não for
+              encontrado.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Excluir Endereço (<code>destroy</code>)</h4>
+      <p>Permite remover um endereço do sistema, incluindo sua associação com a entidade.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O ID do endereço (`payload.params.id`) é validado pelo
+          <code>DeleteValidator_1.default</code>.
+        </li>
+        <li><strong>Exclusão</strong>: O endereço é encontrado pelo seu ID. Se existir, a associação
+          `EnderecoEntidade`
+          relacionada é buscada e excluída primeiro (se existir), seguida pela exclusão do próprio endereço.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com <code>{ status: true }</code> se a exclusão for
+              bem-sucedida.
+            </li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", se o endereço não for
+              encontrado.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Criar Endereço (<code>create</code>)</h4>
+      <p>Permite registrar um novo endereço no sistema e associá-lo a uma entidade existente.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O `payload` da requisição, incluindo o `id_entidade` e os detalhes
+          do
+          endereço, é validado pelo <code>CreateValidator_1.default</code>.</li>
+        <li><strong>Verificação da Entidade</strong>: Primeiramente, verifica-se se a `id_entidade` fornecida
+          corresponde a uma entidade existente.</li>
+        <li><strong>Criação do Endereço e Associação</strong>: O endereço é criado na tabela `enderecos`. Se a
+          criação
+          for bem-sucedida, uma nova entrada é criada na tabela `endereco_entidades` para vincular o endereço à
+          entidade, incluindo `tipo`, `email` e `telefone` específicos para essa associação.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os atributos do novo endereço e sua associação
+              `entidade_endereco`, se a criação for bem-sucedida.</li>
+            <li>Retorna um status <code>400 Bad Request</code> com a mensagem de erro em caso de falha na validação
+              ou
+              outro erro durante a criação.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section id="eventos">
+      <h1>Eventos</h1>
+      <img src="images/eventos.jpg" alt="Eventos" />
+      <p>A seção Eventos do sistema Busca Buffet é o coração da interação entre clientes e buffets, permitindo a
+        criação, consulta, edição e exclusão de eventos. É aqui que os detalhes de cada evento, como tipo, data,
+        localização e status, são gerenciados, além de orquestrar a comunicação de novas propostas.</p>
+
+      <h3>Funcionalidades e Operações</h3>
+
+      <h4>Listagem de Eventos (<code>index</code>)</h4>
+      <p>Este endpoint fornece uma lista abrangente de todos os eventos registrados no sistema. É útil para uma
+        visão
+        geral ou para administradores.</p>
+      <ul>
+        <li><strong>Dados Retornados</strong>: Uma lista de objetos de evento.</li>
+        <li><strong>Dados Carregados Automaticamente (<code>preload</code>)</strong>:
+          <ul>
+            <li>**Entidade (`entidade`)**: Detalhes da entidade (buffet ou cliente) associada ao evento.</li>
+            <li>**Cidade (`cidade`)**: Informações da cidade onde o evento ocorrerá, com o estado (`estado`) também
+              carregado.</li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com a lista de eventos.</li>
+      </ul>
+
+      <h4>Detalhes de um Evento (<code>show</code>)</h4>
+      <p>Permite visualizar os detalhes de um evento específico a partir do seu ID.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O ID do evento (`payload.params.id`) é validado pelo
+          <code>ShowValidator_1.default</code>.
+        </li>
+        <li><strong>Busca do Evento</strong>: O sistema tenta encontrar o evento na tabela `eventos`.</li>
+        <li><strong>Dados Carregados Automaticamente (<code>preload</code>)</strong>:
+          <ul>
+            <li>**Entidade (`entidade`)**: Detalhes da entidade associada.</li>
+            <li>**Cidade (`cidade`)**: Informações da cidade, com o estado também carregado.</li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os detalhes do evento, se encontrado.</li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", caso o evento não seja
+              localizado.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Eventos por ID de Entidade (<code>showByIdEntity</code>)</h4>
+      <p>Retorna todos os eventos criados por uma entidade específica (buffet ou cliente), utilizando o ID da
+        entidade.
+      </p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O ID da entidade (`payload.params.id`) é validado pelo
+          <code>ShowValidator_1.default</code>.
+        </li>
+        <li><strong>Busca de Eventos</strong>: O sistema consulta a tabela `eventos` filtrando pelo `id_entidade`.
+        </li>
+        <li><strong>Dados Carregados Automaticamente (<code>preload</code>)</strong>:
+          <ul>
+            <li>**Entidade (`entidade`)**: Detalhes da entidade associada.</li>
+            <li>**Cidade (`cidade`)**: Informações da cidade, com o estado também carregado.</li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com a lista de eventos, se encontrados.</li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", caso nenhum evento seja
+              localizado para a entidade.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Eventos por Status (<code>showByStatus</code>)</h4>
+      <p>Permite buscar eventos com base em seu status (ex: "pendente", "confirmado", "cancelado").</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O status (`payload.params.id`) é validado pelo
+          <code>ShowValidator_1.default</code>.
+        </li>
+        <li><strong>Busca de Eventos</strong>: O sistema consulta a tabela `eventos` filtrando pelo `status`.</li>
+        <li><strong>Dados Carregados Automaticamente (<code>preload</code>)</strong>:
+          <ul>
+            <li>**Entidade (`entidade`)**: Detalhes da entidade associada.</li>
+            <li>**Cidade (`cidade`)**: Informações da cidade, com o estado também carregado.</li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com a lista de eventos, se encontrados.</li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", caso nenhum evento com o
+              status
+              especificado seja localizado.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Editar Evento (<code>edit</code>)</h4>
+      <p>Permite atualizar os dados de um evento existente.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O <code>payload</code> da requisição, incluindo o ID do evento e os
+          novos dados, é validado pelo <code>EditValidator_1.default</code>.</li>
+        <li><strong>Busca e Atualização</strong>: O evento é encontrado pelo seu ID. Se encontrado, seus atributos
+          são
+          mesclados com os novos dados (`newData`), excluindo campos de rota (como `params` e `id`), e as alterações
+          são
+          salvas no banco de dados.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os atributos atualizados do evento.</li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", se o evento não for
+              encontrado.
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Excluir Evento (<code>destroy</code>)</h4>
+      <p>Permite remover um evento do sistema.</p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O ID do evento (`payload.params.id`) é validado pelo
+          <code>DeleteValidator_1.default</code>.
+        </li>
+        <li><strong>Exclusão</strong>: O evento é encontrado pelo seu ID e, se existir, é removido do banco de
+          dados.
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com <code>{ status: true }</code> se a exclusão for
+              bem-sucedida.
+            </li>
+            <li>Retorna um status <code>404 Not Found</code> com a mensagem "Not found", se o evento não for
+              encontrado.
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Criar Evento (<code>create</code>)</h4>
+      <p>Permite registrar um novo evento no sistema, associando-o a uma entidade (buffet) e enviando uma
+        notificação.
+      </p>
+      <ul>
+        <li><strong>Validação de Dados</strong>: O <code>payload</code> da requisição é validado usando o
+          <code>CreateValidator_1.default</code>.
+        </li>
+        <li><strong>Verificação da Entidade (Buffet)</strong>: O sistema verifica se a `id_entidade` fornecida
+          corresponde a uma entidade do tipo "BUFFET". Se não for um buffet, a criação é recusada.</li>
+        <li><strong>Criação do Evento</strong>: Um novo evento é criado na tabela `eventos` com os dados fornecidos.
+        </li>
+        <li><strong>Notificação por E-mail</strong>: Se o evento for persistido com sucesso, uma notificação por
+          e-mail
+          é enviada para o usuário associado ao buffet.
+          <ul>
+            <li>O e-mail é enviado de `EMAIL_FROM` para o e-mail do usuário do buffet.</li>
+            <li>O assunto é "Nova Proposta para o Buffet".</li>
+            <li>O corpo do e-mail é renderizado a partir do template `emails/new-proposta-to-buffet`, usando o nome
+              do
+              payload para personalização.</li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os atributos do novo evento e da entidade associada
+              se
+              a
+              criação for bem-sucedida.</li>
+            <li>Retorna um status <code>400 Bad Request</code> com a mensagem de erro em caso de falha na validação
+              ou
+              se a entidade não for um buffet.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section id="pagamentos">
+      <h1>Pagamentos</h1>
+      <p>A seção <strong>Pagamentos</strong> do sistema Busca Buffet integra-se diretamente com o PagBank para gerenciar
+        planos
+        de
+        assinatura, assinaturas de clientes, dados de clientes, cupons e faturas. Esta seção é vital para todas as
+        operações financeiras e de cobrança da plataforma.</p>
+
+      <h2>Controladores de Pagamento (V1)</h2>
+      <p>Esta versão inicial dos controladores PagBank oferece funcionalidades básicas de consulta a planos,
+        assinaturas, clientes, cupons e pagamentos registrados na plataforma do PagBank.</p>
+
+      <h4>Listar Planos (<code>showPlans</code>)</h4>
+      <p>Recupera a lista de planos de assinatura disponíveis no PagBank.</p>
+      <ul>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com a lista de planos.</li>
+        <li><strong>Tratamento de Erros</strong>: Retorna um status <code>400 Bad Request</code> em caso de erro na
+          comunicação com o gateway.</li>
+      </ul>
+
+      <h4>Listar Assinaturas (<code>showSubs</code>)</h4>
+      <p>Recupera a lista de todas as assinaturas registradas no PagBank.</p>
+      <ul>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com a lista de assinaturas.</li>
+        <li><strong>Tratamento de Erros</strong>: Retorna um status <code>400 Bad Request</code> em caso de erro na
+          comunicação com o gateway.</li>
+      </ul>
+
+      <h4>Listar Clientes (<code>showCustomers</code>)</h4>
+      <p>Recupera a lista de todos os clientes registrados no PagBank.</p>
+      <ul>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com a lista de clientes.</li>
+        <li><strong>Tratamento de Erros</strong>: Retorna um status <code>400 Bad Request</code> em caso de erro na
+          comunicação com o gateway.</li>
+      </ul>
+
+      <h4>Listar Cupons (<code>showCoupons</code>)</h4>
+      <p>Recupera a lista de todos os cupons promocionais registrados no PagBank.</p>
+      <ul>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com a lista de cupons.</li>
+        <li><strong>Tratamento de Erros</strong>: Retorna um status <code>400 Bad Request</code> em caso de erro na
+          comunicação com o gateway.</li>
+      </ul>
+
+      <h4>Listar Pagamentos (<code>showPayments</code>)</h4>
+      <p>Recupera a lista de todos os pagamentos processados pelo PagBank.</p>
+      <ul>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com a lista de pagamentos.</li>
+        <li><strong>Tratamento de Erros</strong>: Retorna um status <code>400 Bad Request</code> em caso de erro na
+          comunicação com o gateway.</li>
+      </ul>
+
+      <h2>Controladores de Pagamento (V2)</h2>
+      <p>Esta versão mais robusta dos controladores PagBank oferece interações mais específicas e detalhadas com a
+        API
+        do PagBank para gerenciamento de assinaturas, planos, clientes, cupons, faturas, e operações de renovação e
+        edição de planos/clientes, com maior controle e tratamento de erros.</p>
+
+      <h4>Detalhes de Assinatura (<code>GET /pagamentos/pagbank/subscriptions/:id_assinatura</code>)</h4>
+      <p>Consulta os detalhes de uma assinatura específica no PagBank, usando seu ID externo.</p>
+      <ul>
+        <li><strong>Parâmetros</strong>: <code>id_assinatura</code> (obrigatório, no path).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com os dados detalhados da assinatura.</li>
+            <li>Retorna um status <code>400 Bad Request</code> se <code>id_assinatura</code> não for fornecido.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro na comunicação com o
+              PagBank,
+              com detalhes do erro.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Listar Planos (<code>GET /pagamentos/pagbank/plans</code>)</h4>
+      <p>Recupera todos os planos de assinatura cadastrados no PagBank.</p>
+      <ul>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com a lista de planos.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro na comunicação com o
+              PagBank,
+              com detalhes do erro.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Detalhes do Cliente (<code>GET /pagamentos/pagbank/customers/:id_cliente</code>)</h4>
+      <p>Consulta os detalhes de um cliente específico no PagBank, usando seu ID externo.</p>
+      <ul>
+        <li><strong>Parâmetros</strong>: <code>id_cliente</code> (obrigatório, no path).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com os dados detalhados do cliente.</li>
+            <li>Retorna um status <code>400 Bad Request</code> se <code>id_cliente</code> não for fornecido.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro na comunicação com o
+              PagBank,
+              com detalhes do erro.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Listar Cupons (<code>GET /pagamentos/pagbank/coupons</code>)</h4>
+      <p>Recupera a lista de todos os cupons promocionais cadastrados no PagBank.</p>
+      <ul>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com a lista de cupons.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro na comunicação com o
+              PagBank,
+              com detalhes do erro.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Cancelar Assinatura (<code>PUT /pagamentos/pagbank/subscriptions/:id_subscription/cancel</code>)</h4>
+      <p>Cancela uma assinatura existente no PagBank.</p>
+      <ul>
+        <li><strong>Parâmetros</strong>: <code>id_subscription</code> (obrigatório, no path).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com a resposta da API do PagBank.</li>
+            <li>Retorna um status <code>400 Bad Request</code> se <code>id_subscription</code> não for fornecido.
+            </li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro na comunicação com o
+              PagBank.
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Editar Plano (<code>PUT /pagamentos/pagbank/edit-plano/:id_plano</code>)</h4>
+      <p>Atualiza um plano de assinatura, com a particularidade de criar um "plano clone" no banco de dados e no
+        PagBank
+        se o plano original não tiver um clone associado. Isso é feito para preservar o histórico de planos.</p>
+      <ul>
+        <li><strong>Parâmetros</strong>: <code>id_plano</code> (obrigatório, no path).</li>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>nome</code>, <code>valor_mensal</code>,
+          <code>valor_anual</code>, <code>tags</code> (obrigatórios).
+        </li>
+        <li><strong>Processo</strong>:
+          <ul>
+            <li>Busca o plano no banco de dados.</li>
+            <li>Verifica se é um "plano clone" (não editável diretamente).</li>
+            <li>Se não for clone e não tiver clone, cria um novo plano no banco de dados com a flag `clone` e
+              associa-o
+              ao plano pai. Em seguida, cria este novo plano clone no PagBank.</li>
+            <li>Atualiza o(s) plano(s) (original e/ou clone) no PagBank e no banco de dados com as novas
+              informações.
+            </li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com "Plano atualizado com sucesso".</li>
+            <li>Retorna um status <code>400 Bad Request</code> para parâmetros inválidos ou se tentar editar um
+              plano
+              clone.</li>
+            <li>Retorna um status <code>404 Not Found</code> se o plano não for encontrado.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor ou na
+              comunicação
+              com o PagBank.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Editar Cliente (<code>PUT /pagamentos/pagbank/customers/:id_costumer</code>)</h4>
+      <p>Atualiza as informações de um cliente no PagBank e, em seguida, atualiza o e-mail do cliente dentro da
+        estrutura JSON da assinatura no banco de dados local.</p>
+      <ul>
+        <li><strong>Parâmetros</strong>: <code>id_costumer</code> (obrigatório, no path).</li>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>id_entidade</code>, <code>name</code>,
+          <code>email</code>, <code>phones</code>, <code>birth_date</code> (obrigatórios).
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com os dados atualizados do cliente.</li>
+            <li>Retorna um status <code>400 Bad Request</code> para parâmetros inválidos.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor ou na
+              comunicação
+              com o PagBank.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Editar Informações de Cobrança do Cliente
+        (<code>PUT /pagamentos/pagbank/customers/:id_costumer/billing_info</code>)</h4>
+      <p>Atualiza as informações de cobrança (cartão, endereço de cobrança, etc.) de um cliente no PagBank.</p>
+      <ul>
+        <li><strong>Parâmetros</strong>: <code>id_costumer</code> (obrigatório, no path).</li>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>id_entidade</code>,
+          <code>billing_info</code> (obrigatórios, sendo <code>billing_info</code> o objeto com os dados de
+          cobrança).
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com a resposta da API do PagBank.</li>
+            <li>Retorna um status <code>400 Bad Request</code> para parâmetros inválidos.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor ou na
+              comunicação
+              com o PagBank.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Atualizar Plano da Assinatura (<code>PUT /pagamentos/pagbank/subscriptions/:id_subscription</code>)</h4>
+      <p>Permite a troca do plano de uma assinatura existente no PagBank e atualiza as informações correspondentes
+        no
+        banco de dados local. Inclui lógica para tentar ativar a assinatura se um erro específico indicar que ela
+        pode
+        estar inativa.</p>
+      <ul>
+        <li><strong>Parâmetros</strong>: <code>id_subscription</code> (obrigatório, no path).</li>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>plan_name</code> (nome do novo plano),
+          <code>id_entidade</code>, <code>id_plano_db</code> (IDs do banco de dados).
+        </li>
+        <li><strong>Processo</strong>:
+          <ul>
+            <li>Obtém o ID do plano PagBank a partir do `plan_name`.</li>
+            <li>Tenta atualizar a assinatura no PagBank com o novo plano.</li>
+            <li>Se ocorrer um erro `unable_update_subscriptions`, tenta ativar a assinatura.</li>
+            <li>Atualiza o tipo e status da assinatura no banco de dados local.</li>
+            <li>Envia uma notificação por e-mail para o administrador sobre a alteração do plano.</li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com a resposta da API do PagBank ou uma mensagem de sucesso na
+              ativação.</li>
+            <li>Retorna um status <code>400 Bad Request</code> para parâmetros inválidos.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor, na comunicação
+              com
+              o PagBank, ou falha na ativação/notificação.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Renovar Assinatura (<code>POST /pagamentos/pagband/renew/assinatura</code>)</h4>
+      <p>Permite a renovação de uma assinatura existente, enviando o CVV do cartão de crédito associado. Ideal para
+        reativar assinaturas que foram suspensas ou expiradas.</p>
+      <ul>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>id_entidade</code>, <code>cvv</code>
+          (obrigatórios).</li>
+        <li><strong>Processo</strong>:
+          <ul>
+            <li>Busca a entidade e a assinatura no banco de dados.</li>
+            <li>Obtém o ID do cliente PagBank associado à assinatura.</li>
+            <li>Cria uma nova assinatura no PagBank utilizando o plano e cliente existentes, e o CVV fornecido.</li>
+            <li>Atualiza o status e o tipo da assinatura no banco de dados local para 'ACTIVE'.</li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com "Assinatura renovada com sucesso".</li>
+            <li>Retorna um status <code>400 Bad Request</code> para parâmetros inválidos.</li>
+            <li>Retorna um status <code>404 Not Found</code> se a entidade ou assinatura não forem encontradas.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor ou na
+              comunicação
+              com o PagBank.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Nova Renovação/Criação de Assinatura (<code>POST /pagamentos/pagbank/nova-renew/assinatura</code>)</h4>
+      <p>Processo mais complexo que lida com a criação ou renovação de assinaturas, incluindo a atualização de dados
+        de
+        cobrança e o cancelamento de assinaturas antigas se o status permitir.</p>
+      <ul>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>id_entidade</code>,
+          <code>dataPagSeguro</code> (objeto completo com dados da assinatura, cliente e billing info).
+        </li>
+        <li><strong>Processo</strong>:
+          <ul>
+            <li>Busca a entidade e a assinatura atual no banco de dados.</li>
+            <li>Consulta o status atual da assinatura no PagBank.</li>
+            <li>Atualiza as informações de cobrança do cliente no PagBank.</li>
+            <li>Cria uma nova assinatura no PagBank com os dados fornecidos.</li>
+            <li>Se a assinatura atual no PagBank não estiver 'CANCELED' ou 'EXPIRED', ela é cancelada.</li>
+            <li>Atualiza o status e o tipo da assinatura no banco de dados local.</li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com "Assinatura renovada com sucesso".</li>
+            <li>Retorna um status <code>400 Bad Request</code> para parâmetros inválidos.</li>
+            <li>Retorna um status <code>404 Not Found</code> se a entidade, assinatura ou plano não forem
+              encontrados.
+            </li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor ou na
+              comunicação
+              com o PagBank.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Criar Assinatura (<code>POST /pagamentos/pagbank/criar-assinatura</code>)</h4>
+      <p>Cria uma nova assinatura diretamente no PagBank com base nos dados fornecidos. Este é um endpoint genérico
+        para
+        a criação inicial de assinaturas.</p>
+      <ul>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>dataPagSeguro</code> (objeto completo da
+          assinatura).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com a resposta da API do PagBank.</li>
+            <li>Retorna um status <code>400 Bad Request</code> para parâmetros inválidos.</li>
+            <li>Retorna um status <code>200 OK</code> (com erro) ou <code>500 Internal Server Error</code> em caso
+              de
+              erro na comunicação com o PagBank.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Obter Tipo de Assinatura (<code>GET /pagamentos/get-tipo/:id_entidade</code>)</h4>
+      <p>Recupera o objeto JSON `tipo` (que contém detalhes da assinatura PagBank) da assinatura de uma entidade
+        específica armazenada no banco de dados local.</p>
+      <ul>
+        <li><strong>Parâmetros</strong>: <code>id_entidade</code> (obrigatório, no path).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com o objeto `tipo` parseado.</li>
+            <li>Retorna um status <code>400 Bad Request</code> se <code>id_entidade</code> não for fornecido.</li>
+            <li>Retorna um status <code>404 Not Found</code> se a assinatura não for encontrada para a entidade.
+            </li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Listar Faturas (<code>GET /pagamentos/pagbank/invoices/:id_assinatura</code>)</h4>
+      <p>Lista as faturas de uma assinatura específica no PagBank. Para faturas com status 'PENDING', ele tenta
+        obter
+        o
+        status de pagamento mais recente.</p>
+      <ul>
+        <li><strong>Parâmetros</strong>: <code>id_assinatura</code> (obrigatório, no path).</li>
+        <li><strong>Processo</strong>:
+          <ul>
+            <li>Consulta as faturas da assinatura no PagBank.</li>
+            <li>Para faturas com status diferente de 'PAID' ou 'APPROVED', faz uma requisição adicional para obter
+              detalhes do pagamento associado.</li>
+            <li>Atualiza o status da fatura com base nos detalhes do pagamento, se disponíveis.</li>
+          </ul>
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com a lista de faturas (com status e mensagens de pagamento
+              atualizados para faturas pendentes).</li>
+            <li>Retorna um status <code>400 Bad Request</code> se <code>id_assinatura</code> não for fornecido.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor ou na
+              comunicação
+              com o PagBank.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section id="usuarios">
+      <h1>Usuários</h1>
+      <p>A seção de **Usuários** do sistema Busca Buffet gerencia o acesso, registro, autenticação e informações de
+        perfil dos usuários. Ela integra-se com diferentes modelos de dados como Entidades, Buffets e Endereços para
+        fornecer uma visão completa e controle sobre os usuários da plataforma.</p>
+
+      <h2>Controladores de Usuário (V1)</h2>
+      <p>Esta versão dos controladores de usuário lida com operações fundamentais como login, registro, edição e
+        recuperação de senha, utilizando validações e interações com o banco de dados via ORM.</p>
+
+      <h4>Login (<code>POST /login</code>)</h4>
+      <p>Autentica um usuário com e-mail e senha, gerando um token de acesso.</p>
+      <ul>
+        <li><strong>Parâmetros (<code>body</code>)</strong>: <code>email</code>, <code>password</code> (ambos
+          obrigatórios).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com o token de autenticação, informações do usuário, buffet
+              (se
+              aplicável) e entidade.</li>
+            <li>Retorna um status <code>403 Forbidden</code> se o e-mail ou senha forem inválidos.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Registro (<code>POST /register</code>)</h4>
+      <p>Permite o registro de um novo usuário e sua entidade associada, criando os respectivos registros no banco
+        de
+        dados e gerando um token de login.</p>
+      <ul>
+        <li><strong>Parâmetros (<code>body</code>)</strong>: <code>payloadEntidade</code> (dados da entidade),
+          <code>payloadUser</code> (dados do usuário). Opcionalmente, pode incluir
+          <code>payloadEnderecoPrincipal</code>
+          e <code>payloadEnderecoFaturamento</code>.
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com o resultado da criação (entidade, usuário) e o token de
+              autenticação.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de falha no registro, com detalhes
+              do
+              erro.</li>
+          </ul>
+        </li>
+        <li><strong>Observações</strong>: Realiza validação de documento (CPF/CNPJ). Em caso de falha na criação do
+          usuário ou endereços, tenta reverter a criação da entidade.</li>
+      </ul>
+
+      <h4>Validar Usuário (<code>POST /validateUser</code>)</h4>
+      <p>Valida os dados de uma nova entidade e usuário antes do registro, focando principalmente na validade do
+        documento (CPF/CNPJ).</p>
+      <ul>
+        <li><strong>Parâmetros (<code>body</code>)</strong>: <code>payloadEntidade</code> (dados da entidade),
+          <code>payloadUser</code> (dados do usuário).
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com o resultado da validação.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro na validação.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Total de Usuários/Entidades (<code>GET /total</code>)</h4>
+      <p>Retorna o número total de entidades cadastradas no sistema.</p>
+      <ul>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com o número total.</li>
+      </ul>
+
+      <h4>Listar Usuários (<code>GET /users</code>)</h4>
+      <p>Recupera uma lista de todas as entidades cadastradas, com seus respectivos usuários, ordenados por ID em
+        ordem
+        decrescente.</p>
+      <ul>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com a lista de entidades.</li>
+      </ul>
+
+      <h4>Mostrar Usuário (<code>GET /show/:id</code>)</h4>
+      <p>Recupera os detalhes de um usuário específico, incluindo informações da entidade, endereços, contatos e
+        dados
+        do buffet (se aplicável).</p>
+      <ul>
+        <li><strong>Parâmetros (<code>params</code>)</strong>: <code>id</code> (ID do usuário, obrigatório).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os dados detalhados da entidade, usuário e buffet.
+            </li>
+            <li>Retorna um status <code>404 Not Found</code> se o usuário não for encontrado.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Editar Usuário e Entidade (<code>PUT /edit/:id</code>)</h4>
+      <p>Atualiza as informações de um usuário e sua entidade associada, incluindo validação de documento.</p>
+      <ul>
+        <li><strong>Parâmetros (<code>params</code>)</strong>: <code>id</code> (ID do usuário a ser editado,
+          obrigatório).</li>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>payloadUser</code> (dados do usuário),
+          <code>payloadEntidade</code> (dados da entidade).
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>202 Accepted</code> com os dados atualizados da entidade e usuário.</li>
+            <li>Retorna um status <code>404 Not Found</code> se o usuário não for encontrado.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Editar E-mail do Usuário (<code>PUT /editEmail/:id</code>)</h4>
+      <p>Atualiza apenas o e-mail de um usuário específico.</p>
+      <ul>
+        <li><strong>Parâmetros (<code>params</code>)</strong>: <code>id</code> (ID do usuário, obrigatório).</li>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>email</code> (novo e-mail, obrigatório).
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com "Email alterado com sucesso".</li>
+            <li>Retorna um status <code>400 Bad Request</code> se o e-mail não for fornecido.</li>
+            <li>Retorna um status <code>404 Not Found</code> se o usuário não for encontrado.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Excluir Usuário e Entidade (<code>DELETE /destroy/:id</code>)</h4>
+      <p>Exclui um usuário e sua entidade associada do sistema. Usuários com perfil de ADMINISTRADOR não podem ser
+        excluídos por este método.</p>
+      <ul>
+        <li><strong>Parâmetros (<code>params</code>)</strong>: <code>id</code> (ID do usuário a ser excluído,
+          obrigatório).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com <code>status: true</code>.</li>
+            <li>Retorna um status <code>404 Not Found</code> se o usuário não for encontrado ou se for um
+              administrador.
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Listar Usuários por Perfil (<code>GET /byPerfil/:id_perfil</code>)</h4>
+      <p>Recupera uma lista de usuários filtrada pelo ID do perfil.</p>
+      <ul>
+        <li><strong>Parâmetros (<code>params</code>)</strong>: <code>id_perfil</code> (ID do perfil do usuário,
+          obrigatório).</li>
+        <li><strong>Resposta da API</strong>: Retorna um status <code>200 OK</code> com a lista de usuários.</li>
+      </ul>
+
+      <h4>Recuperação de Senha (<code>POST /recovery</code>)</h4>
+      <p>Inicia o processo de recuperação de senha, gerando um token de recuperação e enviando um e-mail com um link
+        para redefinição.</p>
+      <ul>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>email</code> (e-mail do usuário,
+          obrigatório), <code>url</code> (URL para o link de recuperação).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com "E-mail enviado com sucesso" e o token de recuperação.
+            </li>
+            <li>Retorna um status <code>403 Forbidden</code> se o usuário não existir.</li>
+            <li>Retorna um status <code>404 Not Found</code> em caso de erro.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Redefinir Senha (<code>POST /reset</code>)</h4>
+      <p>Permite que um usuário redefina sua senha usando o token de recuperação enviado por e-mail.</p>
+      <ul>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>email</code> (e-mail do usuário),
+          <code>password</code> (nova senha), <code>token</code> (token de recuperação).
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com "Senha alterada com sucesso".</li>
+            <li>**Nota**: O código fornecido parece ter um problema na validação do `token_recovery`, permitindo a
+              redefinição mesmo se o token estiver vazio ou expirado, devido a linhas comentadas.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Controladores de Usuário (V2)</h2>
+      <p>Esta versão dos controladores de usuário utiliza um modelo de banco de dados mais direto
+        (<code>dbQuery</code>)
+        e foca em operações específicas, incluindo auto-login, tratamento de assinaturas PagBank em
+        ativação/inativação
+        de usuários e listagem de usuários para administração.</p>
+
+      <h4>Obter Usuários por Entidade (<code>GET /usuarios/get/:id_entidade</code>)</h4>
+      <p>Recupera todos os usuários associados a uma entidade específica.</p>
+      <ul>
+        <li><strong>Parâmetros (<code>params</code>)</strong>: <code>id_entidade</code> (ID da entidade,
+          obrigatório).
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com a lista de usuários.</li>
+            <li>Retorna um status <code>400 Bad Request</code> se o parâmetro for inválido.</li>
+            <li>Retorna um status <code>404 Not Found</code> se nenhum usuário for encontrado.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Mostrar Detalhes do Usuário (<code>GET /usuarios/show/:id_entidade</code>)</h4>
+      <p>Recupera os detalhes de um usuário e sua entidade, incluindo informações de endereço completo (cidade,
+        estado).
+      </p>
+      <ul>
+        <li><strong>Parâmetros (<code>params</code>)</strong>: <code>id_entidade</code> (ID da entidade,
+          obrigatório).
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com os objetos do usuário e da entidade (incluindo endereços
+              aninhados).</li>
+            <li>Retorna um status <code>400 Bad Request</code> se o parâmetro for inválido.</li>
+            <li>Retorna um status <code>404 Not Found</code> se o usuário ou a entidade não forem encontrados.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Auto-Login (<code>POST /usuarios/autoLogin</code>)</h4>
+      <p>Permite que um usuário faça login automaticamente (geralmente usado para logins via Google ou similares).
+        Se
+        o
+        usuário não existir, ele será criado junto com uma nova entidade.</p>
+      <ul>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>email</code> (e-mail do usuário,
+          obrigatório), <code>nome</code> (nome da entidade/usuário, opcional).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com os dados do usuário, entidade, buffet (se existir) e um
+              token
+              JWT.</li>
+            <li>Retorna um status <code>400 Bad Request</code> se o e-mail não for fornecido.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de falha na criação ou busca.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Login (<code>POST /usuarios/login</code>)</h4>
+      <p>Autentica um usuário com e-mail e senha. Verifica se a conta está vinculada ao Google.</p>
+      <ul>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>email</code>, <code>password</code>
+          (ambos
+          obrigatórios).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com os dados do usuário, entidade, buffet (se existir) e um
+              token
+              JWT.</li>
+            <li>Retorna um status <code>400 Bad Request</code> se os parâmetros forem inválidos.</li>
+            <li>Retorna um status <code>401 Unauthorized</code> se a senha for inválida.</li>
+            <li>Retorna um status <code>403 Forbidden</code> se a conta estiver vinculada ao Google.</li>
+            <li>Retorna um status <code>404 Not Found</code> se o usuário não for encontrado.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Recuperação de Senha (<code>POST /usuarios/recovery</code>)</h4>
+      <p>Inicia o processo de recuperação de senha, gerando um token de recuperação e enviando um e-mail com um link
+        para redefinição.</p>
+      <ul>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>email</code> (e-mail do usuário,
+          obrigatório).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com "E-mail enviado com sucesso".</li>
+            <li>Retorna um status <code>400 Bad Request</code> se o e-mail não for fornecido.</li>
+            <li>Retorna um status <code>404 Not Found</code> se o usuário não for encontrado.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor ou falha no
+              envio
+              do e-mail.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Obter Usuário Administrador (<code>GET /usuarioAdmin/:id_usuario</code>)</h4>
+      <p>Recupera os detalhes de um usuário específico, geralmente para fins administrativos.</p>
+      <ul>
+        <li><strong>Parâmetros (<code>params</code>)</strong>: <code>id_usuario</code> (ID do usuário, obrigatório).
+        </li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com os detalhes do usuário.</li>
+            <li>Retorna um status <code>400 Bad Request</code> se o parâmetro for inválido.</li>
+            <li>Retorna um status <code>404 Not Found</code> se o usuário não for encontrado.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Listar Usuários (Administração) (<code>GET /usuariosAdmin</code>)</h4>
+      <p>Lista todos os usuários, exceto os administradores (<code>id_perfil != 1</code>), combinando informações de
+        usuário e entidade.</p>
+      <ul>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com uma lista de objetos contendo dados da entidade e do
+              usuário.
+            </li>
+            <li>Retorna um status <code>404 Not Found</code> se nenhum usuário for encontrado.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Listar Usuários Ativos (<code>GET /usuarios</code>)</h4>
+      <p>Lista todos os usuários ativos (<code>ativo = 1</code>) e que não são administradores
+        (<code>id_perfil != 1</code>), combinando informações de usuário e entidade.</p>
+      <ul>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com uma lista de objetos contendo dados da entidade e do
+              usuário.
+            </li>
+            <li>Retorna um status <code>404 Not Found</code> se nenhum usuário for encontrado.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Desativar Usuário (<code>PUT /usuarios/:id_usuario</code>)</h4>
+      <p>Desativa um usuário (define <code>ativo = 0</code>) e, se o usuário for um Buffet (<code>tipo = 2</code>),
+        tenta suspender a assinatura associada no PagBank.</p>
+      <ul>
+        <li><strong>Parâmetros (<code>params</code>)</strong>: <code>id_usuario</code> (ID do usuário, obrigatório).
+        </li>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>tipo</code> (tipo de perfil do usuário,
+          obrigatório).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com "Usuário atualizado com sucesso".</li>
+            <li>Retorna um status <code>400 Bad Request</code> para parâmetros inválidos ou se tentar alterar um
+              administrador.</li>
+            <li>Retorna um status <code>404 Not Found</code> se o usuário não for encontrado.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor ou na
+              comunicação
+              com o PagBank.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Editar Entidade (<code>PUT /usuarios/edit/:id_entidade</code>)</h4>
+      <p>Atualiza as informações de uma entidade específica com base nos campos fornecidos no corpo da requisição.
+      </p>
+      <ul>
+        <li><strong>Parâmetros (<code>params</code>)</strong>: <code>id_entidade</code> (ID da entidade,
+          obrigatório).
+        </li>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: Objeto com os campos da entidade a serem
+          atualizados.</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com "Entidade atualizada com sucesso".</li>
+            <li>Retorna um status <code>400 Bad Request</code> se o parâmetro for inválido ou se nenhum campo para
+              atualizar for fornecido.</li>
+            <li>Retorna um status <code>404 Not Found</code> se a entidade não for encontrada.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Restaurar Usuário (<code>PUT /usuarios/restore/:id_usuario</code>)</h4>
+      <p>Reativa um usuário (define <code>ativo = 1</code>) e, se o usuário for um Buffet (<code>tipo = 2</code>),
+        tenta
+        ativar a assinatura associada no PagBank.</p>
+      <ul>
+        <li><strong>Parâmetros (<code>params</code>)</strong>: <code>id_usuario</code> (ID do usuário, obrigatório).
+        </li>
+        <li><strong>Corpo da Requisição (<code>body</code>)</strong>: <code>tipo</code> (tipo de perfil do usuário,
+          obrigatório).</li>
+        <li><strong>Resposta da API</strong>:
+          <ul>
+            <li>Retorna um status <code>200 OK</code> com "Usuário atualizado com sucesso".</li>
+            <li>Retorna um status <code>400 Bad Request</code> para parâmetros inválidos ou se tentar restaurar um
+              administrador.</li>
+            <li>Retorna um status <code>404 Not Found</code> se o usuário não for encontrado.</li>
+            <li>Retorna um status <code>500 Internal Server Error</code> em caso de erro no servidor ou na
+              comunicação
+              com o PagBank.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>
